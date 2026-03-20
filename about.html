@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Billy McCannon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0e0c09;--paper:#f4f0e8;--warm:#c9a96e;--rust:#8b3a2a;--pale:#e8e3d8;--mid:#7a7468}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
+.nav-logo:hover{color:var(--ink)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8b3a2a;text-decoration:none;font-weight:400}
+.nav-links a:hover{color:var(--ink)}
+
+.page-hero{padding:8rem 5rem 5rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+.page-tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.2rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em}
+
+.bio-section{padding:5rem;display:grid;grid-template-columns:1fr 2fr;gap:6rem}
+.bio-aside{display:flex;flex-direction:column;gap:3rem}
+.stat-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--rust);line-height:1}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:0.25rem}
+.bio-body p{font-size:0.95rem;line-height:1.9;color:#3a3730;margin-bottom:1.3rem;max-width:62ch}
+.bio-body h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin:2.5rem 0 1rem}
+.credential-list{margin-top:2rem;list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.credential-list li{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.05em;color:var(--mid);padding-left:1.2rem;position:relative}
+.credential-list li::before{content:'—';position:absolute;left:0;color:var(--rust)}
+
+.page-footer{background:var(--ink);padding:1.5rem 5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,240,232,0.08)}
+.page-footer p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.25)}
+.footer-nav{display:flex;gap:2rem}
+.footer-nav a{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);text-decoration:none}
+.footer-nav a:hover{color:var(--warm)}
+
+@media(max-width:900px){
+  nav{padding:0}
+  .nav-inner{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:0.65rem}
+  .page-hero{padding:7rem 2rem 3rem}
+  .bio-section{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem}
+  .page-footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Billy McCannon</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="everybody-knows.html">Everybody Knows</a></li>
+      <li><a href="films.html">Films</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <p class="page-tag">Billy McCannon · Amulet Studios · Dublin</p>
+  <h1 class="page-title">About</h1>
+</section>
+
+<section class="bio-section">
+  <div class="bio-aside">
+    <div><p class="stat-number">35</p><p class="stat-label">Years filmmaking</p></div>
+    <div><p class="stat-number">10</p><p class="stat-label">Walls Behind Walls · Portlaoise Prison</p></div>
+    <div><p class="stat-number">MA</p><p class="stat-label">Fine Art · NCAD</p></div>
+  </div>
+  <div class="bio-body">
+    <p>Billy McCannon is an Irish filmmaker and participatory arts practitioner with over 35 years of experience across drama, documentary and community arts. He is the founder and managing director of Amulet Studios, a Dublin-based digital cinema studio, and holds an MA in Fine Art from NCAD, where he lectured in Fine Art from 2000 to 2009.</p>
+    <p>His short films have won awards at the Galway Film Fleadh, Courmayeur International Film Festival and the Boston Irish Film Festival, and have been broadcast on Channel 4, RTÉ, ZDF Germany, Showtime Australia and Tara Television USA.</p>
+    <p>A founding member of Film Base, he chaired the organisation during the successful campaign to establish the Irish Film Board, helping build the infrastructure that enabled independent Irish production to flourish.</p>
+    <p>From 1999 to 2009 he developed the <em>Walls Behind Walls</em> project in Portlaoise Prison — a decade of filmmaking with former combatants using a methodology rooted in Theatre of the Oppressed that gave participants full ownership of their recorded stories.</p>
+    <p>His current feature documentary, <em>Everybody Knows</em>, follows global resistance to genocide in Gaza through the lens of Irish post-colonial identity. A parallel project, <em>Boots on Backwards</em>, examines Colombia's false positives scandal through the same participatory methodology.</p>
+    <ul class="credential-list">
+      <li>Founder &amp; MD, Amulet Studios — Dublin 8</li>
+      <li>Founding Member, Film Base</li>
+      <li>MA Fine Art, NCAD · Lecturer NCAD 2000–2009</li>
+      <li><a href="mailto:billy@amuletstudios.ie" style="color:var(--rust)">billy@amuletstudios.ie</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <p>© 2026 Billy McCannon / Amulet Studios</p>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="films.html">Films

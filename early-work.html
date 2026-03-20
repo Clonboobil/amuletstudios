@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Early Work — Billy McCannon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0e0c09;--paper:#f4f0e8;--warm:#c9a96e;--rust:#8b3a2a;--pale:#e8e3d8;--mid:#7a7468}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
+body.modal-open{overflow:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+.nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
+.nav-logo:hover{color:#8b3a2a}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8b3a2a;text-decoration:none;font-weight:400}
+.nav-links a:hover{color:#8b3a2a}
+.page-hero{padding:8rem 5rem 5rem;border-bottom:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end}
+.page-hero.dark{background:var(--ink);color:var(--paper);border-bottom:none}
+.back-link{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:2rem;transition:color 0.2s}
+.page-hero.dark .back-link{color:rgba(244,240,232,0.4)}
+.back-link:hover{color:var(--rust)}
+.page-hero.dark .back-link:hover{color:var(--warm)}
+.page-tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.2rem}
+.page-hero.dark .page-tag{color:var(--warm)}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--mid)}
+.page-hero.dark .page-subtitle{color:rgba(244,240,232,0.5)}
+.page-hero-right p{font-size:0.95rem;line-height:1.85;color:#3a3730;margin-bottom:1rem}
+.page-hero.dark .page-hero-right p{color:rgba(244,240,232,0.75)}
+.page-meta{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid var(--pale);padding-top:1.5rem}
+.page-hero.dark .page-meta{border-top-color:rgba(244,240,232,0.15)}
+.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.25rem}
+.page-hero.dark .meta-label{color:rgba(244,240,232,0.4)}
+.meta-value{font-size:0.85rem}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--pale)}
+.section-label.light{color:rgba(244,240,232,0.4)}
+.section-label.light::after{background:rgba(244,240,232,0.1)}
+.content-section{padding:5rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+.content-section.dark{background:var(--ink);color:var(--paper);border-bottom:none}
+.content-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem}
+.content-aside h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1.1;margin-bottom:0.5rem}
+.content-aside p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--mid)}
+.content-section.dark .content-aside p{color:rgba(244,240,232,0.4)}
+.content-body p{font-size:0.9rem;line-height:1.85;color:#3a3730;margin-bottom:1rem;max-width:60ch}
+.content-section.dark .content-body p{color:rgba(244,240,232,0.75)}
+.pull-quote{padding:5rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+.pull-quote blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-style:italic;line-height:1.4;max-width:24ch}
+.pull-quote blockquote em{color:var(--rust);font-style:normal}
+.film-section{padding:5rem}
+.film-section.dark{background:var(--ink)}
+.film-section+.film-section{border-top:1px solid rgba(0,0,0,0.06)}
+.film-section.dark+.film-section,.film-section+.film-section.dark{border-top:none}
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.film-card{position:relative;cursor:pointer;overflow:hidden;background:var(--pale)}
+.film-card.dark{background:var(--ink)}
+.film-thumb{padding-bottom:56.25%;position:relative;overflow:hidden;background:#ddd8cc}
+.film-card.dark .film-thumb{background:#1a1714}
+.film-thumb-symbol{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--rust);opacity:0.08;transition:transform 0.5s,opacity 0.3s}
+.film-card.dark .film-thumb-symbol{color:var(--warm)}
+.film-card:hover .film-thumb-symbol{transform:scale(1.15);opacity:0.14}
+.film-card-body{padding:1.5rem}
+.film-card-tag{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem}
+.film-card.dark .film-card-tag{color:var(--warm)}
+.film-card-title{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--ink);margin-bottom:0.4rem;transition:color 0.2s}
+.film-card.dark .film-card-title{color:var(--paper)}
+.film-card:hover .film-card-title{color:var(--rust)}
+.film-card.dark:hover .film-card-title{color:var(--warm)}
+.film-card-year{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--mid);margin-bottom:0.5rem}
+.film-card.dark .film-card-year{color:rgba(244,240,232,0.35)}
+.film-card-desc{font-size:0.8rem;line-height:1.65;color:#3a3730}
+.film-card.dark .film-card-desc{color:rgba(244,240,232,0.5)}
+.film-card-play{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-top:0.75rem;display:inline-block;opacity:0;transform:translateY(4px);transition:opacity 0.2s,transform 0.2s}
+.film-card.dark .film-card-play{color:var(--warm)}
+.film-card:hover .film-card-play{opacity:1;transform:translateY(0)}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2rem}
+.card-item{background:rgba(244,240,232,0.04);padding:2rem;border:1px solid rgba(244,240,232,0.08)}
+.card-name{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--warm);margin-bottom:0.4rem}
+.card-role{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(244,240,232,0.4);line-height:1.5}
+.film-panel{border-top:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 2fr auto;gap:4rem;padding:2.5rem 0;text-decoration:none;color:var(--ink);transition:background 0.2s;cursor:pointer}
+.film-panel:last-child{border-bottom:1px solid rgba(0,0,0,0.08)}
+.film-panel:hover{background:rgba(139,58,42,0.02)}
+.film-panel:hover .panel-title{color:var(--rust)}
+.film-panel:hover .panel-arrow{opacity:1;transform:translateX(0)}
+.panel-number{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;color:var(--mid);margin-bottom:0.5rem}
+.panel-tag{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-bottom:0.4rem}
+.panel-status{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:var(--mid)}
+.panel-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);font-style:italic;font-weight:700;line-height:1.05;margin-bottom:0.75rem;transition:color 0.2s}
+.panel-desc{font-size:0.9rem;line-height:1.8;color:#3a3730;max-width:50ch}
+.panel-arrow{font-size:1.5rem;color:var(--rust);align-self:center;opacity:0;transform:translateX(-8px);transition:opacity 0.2s,transform 0.2s}
+.wip-banner{margin:2rem 5rem 0;padding:1rem 1.5rem;background:var(--pale);border-left:3px solid var(--warm)}
+.wip-banner p{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--mid)}
+.modal-overlay{position:fixed;inset:0;background:rgba(14,12,9,0.94);z-index:500;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.modal{background:var(--ink);max-width:900px;width:100%;position:relative;transform:translateY(30px);transition:transform 0.35s}
+.modal-overlay.active .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:-2.5rem;right:0;background:none;border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);transition:color 0.2s}
+.modal-close:hover{color:var(--warm)}
+.modal-title-bar{padding:1.5rem 2rem 1rem;display:flex;justify-content:space-between;align-items:baseline}
+.modal-film-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--paper)}
+.modal-film-year{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.35)}
+.modal-video{position:relative;padding-bottom:56.25%;background:#000}
+.modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.page-footer{background:var(--ink);padding:1.5rem 5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,240,232,0.08)}
+.page-footer p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.25)}
+.footer-nav{display:flex;gap:2rem}
+.footer-nav a{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);text-decoration:none}
+.footer-nav a:hover{color:var(--warm)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+  .page-hero{grid-template-columns:1fr;gap:2rem;padding:7rem 2rem 3rem}
+  .page-hero.dark{padding:7rem 2rem 3rem}
+  .content-section{padding:3rem 2rem}
+  .content-grid{grid-template-columns:1fr;gap:2rem}
+  .film-section{padding:3rem 2rem}
+  .film-grid{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .pull-quote{padding:3rem 2rem}
+  .film-panel{grid-template-columns:1fr;gap:1rem;padding:2rem 0}
+  .panel-arrow{display:none}
+  .wip-banner{margin:2rem 2rem 0}
+  .page-footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
+  .footer-nav{justify-content:center}
+  .page-meta{grid-template-columns:1fr 1fr}
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+  <a class="nav-logo" href="index.html">Billy McCannon</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="everybody-knows.html">Everybody Knows</a></li>
+    <li><a href="films.html">Films</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div>
+    <a href="films.html" class="back-link">← Back to Films</a>
+    <p class="page-tag">Short Films · 1988–2004</p>
+    <h1 class="page-title">Early Work</h1>
+  </div>
+  <div class="page-hero-right">
+    <p>Short films shot on celluloid. Cork Film Festival, IFB Short Cuts, international broadcast and acquisition.</p>
+    <p><em>Recoil</em> won Best Irish Short at the Galway Film Fleadh, Best International Short at Courmayeur, and Best Short at the Boston Irish Film Festival. <em>One More Shot</em> was acquired by ZDF Germany, Showtime Australia and Tara Television USA.</p>
+  </div>
+</section>
+<section class="film-section">
+  <p class="section-label">Films</p>
+  <div class="film-grid">
+    <div class="film-card" data-vimeo="7683056" data-title="Short Films Showreel" data-year="1988–2004">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Showreel</p>
+    <h3 class="film-card-title">Short Films Showreel</h3>
+    <p class="film-card-year">1988–2004</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+    <div class="film-card" data-vimeo="9407693" data-title="Recoil" data-year="2004">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Short Film</p>
+    <h3 class="film-card-title">Recoil</h3>
+    <p class="film-card-year">2004</p>
+    <p class="film-card-desc">Best Irish Short · Galway Film Fleadh · Best International Short · Courmayeur · Best Short · Boston Irish Film Festival</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+    <div class="film-card" data-vimeo="9407626" data-title="That's All Right" data-year="1988">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Short Film</p>
+    <h3 class="film-card-title">That's All Right</h3>
+    <p class="film-card-year">1988</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+    <div class="film-card" data-vimeo="9407669" data-title="There's A Hole In The Ozone Layer Just Above Clonboo" data-year="1990">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Short Drama</p>
+    <h3 class="film-card-title">There's A Hole In The Ozone Layer Just Above Clonboo</h3>
+    <p class="film-card-year">1990</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+    <div class="film-card" data-vimeo="11178525" data-title="One More Shot — Part 1" data-year="1996">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Short Film</p>
+    <h3 class="film-card-title">One More Shot — Part 1</h3>
+    <p class="film-card-year">1996</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+    <div class="film-card" data-vimeo="11230929" data-title="One More Shot — Part 2" data-year="1996">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Short Film</p>
+    <h3 class="film-card-title">One More Shot — Part 2</h3>
+    <p class="film-card-year">1996</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <p>© 2026 Billy McCannon / Amulet Studios</p>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="films.html">Films</a>
+    <a href="everybody-knows.html">Everybody Knows</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</footer>
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" id="modal-close">✕ Close</button>
+    <div class="modal-title-bar">
+      <span class="modal-film-title" id="modal-film-title"></span>
+      <span class="modal-film-year" id="modal-film-year"></span>
+    </div>
+    <div class="modal-video">
+      <iframe id="modal-iframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<script>
+const overlay=document.getElementById('modal-overlay');
+function openModal(id,title,year){
+  document.getElementById('modal-film-title').textContent=title;
+  document.getElementById('modal-film-year').textContent=year;
+  document.getElementById('modal-iframe').src=`https://player.vimeo.com/video/${id}?autoplay=1&byline=0&portrait=0&title=0&color=c9a96e`;
+  overlay.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function closeModal(){
+  overlay.classList.remove('active');
+  document.body.classList.remove('modal-open');
+  document.getElementById('modal-iframe').src='';
+}
+document.getElementById('modal-close').addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.querySelectorAll('.film-card[data-vimeo]').forEach(card=>{
+  card.addEventListener('click',()=>openModal(card.dataset.vimeo,card.dataset.title,card.dataset.year));
+  const thumb=card.querySelector('.film-thumb');
+  fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${card.dataset.vimeo}&width=640`)
+    .then(r=>r.json()).then(d=>{if(d.thumbnail_url){thumb.style.backgroundImage=`url(${d.thumbnail_url})`;thumb.style.backgroundSize='cover';thumb.style.backgroundPosition='center';}}).catch(()=>{});
+});
+</script>
+</body>
+</html>

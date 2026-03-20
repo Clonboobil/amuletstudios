@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billy McCannon — Documentary Filmmaker</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0e0c09;--paper:#f4f0e8;--warm:#c9a96e;--rust:#8b3a2a;--pale:#e8e3d8;--mid:#7a7468}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+.nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
+.nav-logo:hover{color:#8b3a2a}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8b3a2a;text-decoration:none;font-weight:400}
+.nav-links a:hover{color:#8b3a2a}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:60px}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem 5rem 5rem;border-right:1px solid rgba(0,0,0,0.1)}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.5rem}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,6rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.25rem}
+.hero-name em{font-style:italic;color:var(--rust)}
+.hero-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;color:var(--mid);margin-bottom:2rem}
+.hero-bio{font-size:0.95rem;line-height:1.8;max-width:38ch;margin-bottom:2.5rem}
+.hero-bio strong{font-weight:400;color:var(--rust)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn-primary{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--rust);border:none;padding:0.8rem 1.6rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:#6e2e21}
+.btn-ghost{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--ink);padding:0.8rem 1.6rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.hero-right{padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.film-list{list-style:none}
+.film-item{border-top:1px solid rgba(0,0,0,0.1);padding:1.2rem 0;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;cursor:pointer}
+.film-item:last-child{border-bottom:1px solid rgba(0,0,0,0.1)}
+.film-item:hover .film-name{color:var(--rust)}
+.film-name{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;transition:color 0.2s;flex:1}
+.film-meta{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--mid);white-space:nowrap}
+.film-arrow{color:var(--rust);opacity:0;transition:opacity 0.2s}
+.film-item:hover .film-arrow{opacity:1}
+
+/* SHOWREEL */
+#showreel{background:var(--ink);padding:4rem 5rem}
+.showreel-label{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,240,232,0.4);margin-bottom:1.5rem}
+.showreel-wrapper{position:relative;width:100%;padding-bottom:56.25%;background:#000}
+.showreel-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.showreel-caption{margin-top:1rem;display:flex;justify-content:space-between}
+.showreel-caption p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.3)}
+.showreel-caption a{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--warm);text-decoration:none}
+
+/* QUOTE */
+.rule-text{padding:4rem 5rem 2rem;border-top:1px solid rgba(0,0,0,0.1)}
+.rule-text p{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.5rem);font-style:italic;line-height:1.4;max-width:22ch}
+.rule-text p em{color:var(--rust);font-style:normal}
+
+/* ABOUT */
+#about{padding:5rem;display:grid;grid-template-columns:1fr 2fr;gap:5rem;border-top:1px solid rgba(0,0,0,0.08)}
+.about-aside{display:flex;flex-direction:column;gap:2.5rem}
+.stat-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--rust);line-height:1}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-top:0.25rem}
+.about-body h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem}
+.about-body p{font-size:0.9rem;line-height:1.85;color:#3a3730;margin-bottom:1rem;max-width:60ch}
+.credential-list{margin-top:2rem;list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.credential-list li{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.05em;color:var(--mid);padding-left:1.2rem;position:relative}
+.credential-list li::before{content:'—';position:absolute;left:0;color:var(--rust)}
+
+/* CONTACT */
+#contact{padding:5rem;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end}
+#contact h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em}
+#contact h2 em{font-style:italic;color:var(--warm)}
+.contact-details{display:flex;flex-direction:column;gap:2rem}
+.contact-row{border-top:1px solid rgba(244,240,232,0.1);padding-top:1.2rem}
+.contact-row-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,240,232,0.4);margin-bottom:0.3rem}
+.contact-row-value{font-size:0.9rem}
+.contact-row-value a{color:var(--warm);text-decoration:none}
+
+/* FOOTER */
+.page-footer{background:var(--ink);padding:1.5rem 5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,240,232,0.08)}
+.page-footer p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.25)}
+.footer-nav{display:flex;gap:2rem}
+.footer-nav a{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);text-decoration:none}
+.footer-nav a:hover{color:var(--warm)}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:0.65rem}
+  .hero{grid-template-columns:1fr;padding-top:60px}
+  .hero-left{padding:3rem 2rem 2rem;border-right:none;border-bottom:1px solid rgba(0,0,0,0.1)}
+  .hero-right{padding:2rem}
+  #showreel,#about,.rule-text,#contact{padding:3rem 2rem}
+  #about,#contact{grid-template-columns:1fr}
+  .page-footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+  <a class="nav-logo" href="index.html">Billy McCannon</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="everybody-knows.html">Everybody Knows</a></li>
+    <li><a href="films.html">Films</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Documentary Filmmaker — Dublin</p>
+    <h1 class="hero-name">Billy<br><em>McCannon</em></h1>
+    <p class="hero-title">Director · Amulet Studios</p>
+    <p class="hero-bio">35 years making films that go where they're not supposed to. Work built on trust, shaped by Irish experience, and pointed at the <strong>architecture of power</strong>.<br><br>Member, Directors Guild of Ireland.</p>
+    <div class="hero-ctas">
+      <a href="#showreel" class="btn-primary">Watch Showreel</a>
+      <a href="films.html" class="btn-ghost">All Films</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <ul class="film-list">
+      <li class="film-item" onclick="location.href='everybody-knows.html'">
+        <span class="film-name">Everybody Knows</span>
+        <span class="film-meta">Feature · Post-Production</span>
+        <span class="film-arrow">→</span>
+      </li>
+      <li class="film-item" onclick="location.href='boots-on-backwards.html'">
+        <span class="film-name">Boots on Backwards</span>
+        <span class="film-meta">Feature · Development</span>
+        <span class="film-arrow">→</span>
+      </li>
+      <li class="film-item" onclick="location.href='participatory.html'">
+        <span class="film-name">Participatory Works</span>
+        <span class="film-meta">Portlaoise · Works Works</span>
+        <span class="film-arrow">→</span>
+      </li>
+      <li class="film-item" onclick="location.href='early-work.html'">
+        <span class="film-name">Early Work</span>
+        <span class="film-meta">Short Films · 1988–2004</span>
+        <span class="film-arrow">→</span>
+      </li>
+      <li class="film-item" onclick="location.href='personal-films.html'">
+        <span class="film-name">Personal Films</span>
+        <span class="film-meta">Ongoing</span>
+        <span class="film-arrow">→</span>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<section id="showreel">
+  <p class="showreel-label">Showreel</p>
+  <div class="showreel-wrapper">
+    <iframe src="https://player.vimeo.com/video/7683056?byline=0&portrait=0&title=0&color=c9a96e" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="showreel-caption">
+    <p>Amulet Studios · Dublin</p>
+    <a href="https://vimeo.com/amulet" target="_blank" rel="noopener">View full channel on Vimeo ↗</a>
+  </div>
+</section>
+
+
+
+<section id="about">
+  <div class="about-aside">
+    <div><p class="stat-number">35</p><p class="stat-label">Years filmmaking</p></div>
+    <div><p class="stat-number">10</p><p class="stat-label">Walls Behind Walls · Portlaoise Prison</p></div>
+    <div><p class="stat-number">DGI</p><p class="stat-label">Directors Guild of Ireland</p></div>
+  </div>
+  <div class="about-body">
+    <h2>Documentary is<br>a contact sport.</h2>
+    <p>Irish filmmaker and participatory arts practitioner. Founder of Amulet Studios. 35 years across drama, documentary and community arts. MA Fine Art, NCAD.</p>
+    <p>Galway Film Fleadh · Courmayeur · Boston Irish Film Festival · ZDF · Showtime Australia · Tara Television USA.</p>
+    <a href="about.html" style="display:inline-block;margin-top:1.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#8b3a2a;text-decoration:none;border-bottom:1px solid #8b3a2a;padding-bottom:0.2rem">Full biography →</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div>
+    <h2>Let's make<br>something<br><em>true.</em></h2>
+  </div>
+  <div class="contact-details">
+    <div class="contact-row">
+      <p class="contact-row-label">Based in</p>
+      <p class="contact-row-value">Inchicore, Dublin 8, Ireland</p>
+    </div>
+    <div class="contact-row">
+      <p class="contact-row-label">Studio</p>
+      <p class="contact-row-value">Amulet Studios</p>
+    </div>
+    <div class="contact-row">
+      <p class="contact-row-label">Email</p>
+      <p class="contact-row-value"><a href="mailto:billy@amuletstudios.ie">billy@amuletstudios.ie</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <p>© 2026 Billy McCannon / Amulet Studios</p>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="films.h
