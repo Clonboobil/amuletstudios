@@ -196,15 +196,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
       <p class="contact-row-label">Studio</p>
       <p class="contact-row-value">Amulet Studios</p>
     </div>
-    <div class="contact-row">
-      <p class="contact-row-label">Email</p>
-      <p class="contact-row-value"><a href="mailto:billy@amuletstudios.ie">billy@amuletstudios.ie</a></p>
+    <div class="contact-row" style="border-top:1px solid rgba(244,240,232,0.1);padding-top:1.5rem">
+      <form action="https://formspree.io/f/xyknvazy" method="POST" style="display:flex;flex-direction:column;gap:0.75rem">
+        <input type="text" name="name" placeholder="Your name" required style="font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;background:rgba(244,240,232,0.08);border:1px solid rgba(244,240,232,0.2);color:var(--paper);outline:none">
+        <input type="email" name="email" placeholder="Your email" required style="font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;background:rgba(244,240,232,0.08);border:1px solid rgba(244,240,232,0.2);color:var(--paper);outline:none">
+        <textarea name="message" placeholder="Your message" rows="4" required style="font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;background:rgba(244,240,232,0.08);border:1px solid rgba(244,240,232,0.2);color:var(--paper);outline:none;resize:vertical"></textarea>
+        <button type="submit" style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--rust);border:none;padding:0.85rem 1.5rem;cursor:pointer;align-self:flex-start">Send message</button>
+      </form>
     </div>
   </div>
 </section>
-
-<footer class="page-footer">
-  <p>© 2026 Billy McCannon / Amulet Studios</p>
-  <nav class="footer-nav">
-    <a href="index.html">Home</a>
-    <a href="films.h
