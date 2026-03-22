@@ -160,10 +160,10 @@ body { animation: pageFadeIn 0.5s ease forwards; }
 @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* ── Film card lift ── */
-.film-card {
+.film-card, .card-item {
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
-.film-card:hover {
+.film-card:hover, .card-item:hover {
   transform: translateY(-4px) !important;
   box-shadow: 0 12px 32px rgba(0,0,0,0.18) !important;
 }
