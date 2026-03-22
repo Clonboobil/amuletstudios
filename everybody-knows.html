@@ -200,7 +200,7 @@ body { animation: pageFadeIn 0.5s ease forwards; }
 <section class="page-hero" style="background:var(--pale)">
   <div>
     <a href="films.html" class="back-link">← Back to Films</a>
-    <blockquote style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;line-height:1.4;color:var(--ink);margin:1.5rem 0 1rem">We can only see Gaza when we can <em style="color:var(--rust);font-style:normal">see ourselves</em> in it.</blockquote>
+    <blockquote class="hero-quote" style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;line-height:1.4;color:var(--ink);margin:1.5rem 0 1rem;opacity:0;transform:scale(0.97);transition:opacity 0.9s ease 0.3s,transform 0.9s ease 0.3s">We can only see Gaza when we can <em style="color:var(--rust);font-style:normal">see ourselves</em> in it.</blockquote>
     <p class="page-tag" style="margin-top:0.5rem">Feature Documentary · Post-Production · 2026</p>
     <p class="page-subtitle">Director · Billy McCannon · Producer · Sadbh McCannon</p>
   </div>
@@ -433,6 +433,15 @@ for (var i = 0; i < cards.length; i++) {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+
+  // Hero quote fade in on load
+  var heroQuote = document.querySelector('.hero-quote');
+  if (heroQuote) {
+    setTimeout(function() {
+      heroQuote.style.opacity = '1';
+      heroQuote.style.transform = 'scale(1)';
+    }, 400);
   }
 })();
 </script>
