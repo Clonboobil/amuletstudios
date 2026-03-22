@@ -12,7 +12,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
 body.modal-open{overflow:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
 .nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
 .nav-logo:hover{color:#8b3a2a}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
   .page-hero{grid-template-columns:1fr;gap:2rem;padding:7rem 2rem 3rem}
   .page-hero.dark{padding:7rem 2rem 3rem}
   .content-section{padding:3rem 2rem}

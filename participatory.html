@@ -12,7 +12,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
 body.modal-open{overflow:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
 .nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
 .nav-logo:hover{color:#8b3a2a}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
   .page-hero{grid-template-columns:1fr;gap:2rem;padding:7rem 2rem 3rem}
   .page-hero.dark{padding:7rem 2rem 3rem}
   .content-section{padding:3rem 2rem}
@@ -146,6 +146,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
   </div>
 </nav>
 
+<div style="width:100%;overflow:hidden;padding-top:60px">
+  <img src="https://photos.smugmug.com/Website-Stills/i-2SRHvzZ/0/K3J27sP26rC7W4cBZQhJkFZVbGS3h7VnPqkWh4cJT/M/ts%20cu%20-%202005-04-12%20at%2013-51-22-M.jpg" alt="Paul McIntyre in F-Slot" style="width:100%;height:450px;object-fit:cover;object-position:30% 55%;display:block">
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--mid);padding:0.5rem 5rem">Paul McIntyre · <em>F-Slot</em> · Portlaoise Prison Project</p>
+</div>
 <section class="page-hero">
   <div>
     <a href="films.html" class="back-link">← Back to Films</a>
@@ -158,10 +162,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
     <p>Theatre of the Oppressed. Full participant ownership. Nothing released without consent.</p>
   </div>
 </section>
-<section class="film-section dark">
-  <p class="section-label">Portlaoise Prison Project · 1999–2009</p>
+<section class="film-section" style="border-top:3px solid var(--rust);padding-top:4rem">
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--rust);margin-bottom:0.5rem;line-height:1.1">Walls Behind Walls</h2><p style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:1.5rem">Portlaoise Prison Project · 1999–2009</p>
+  <p style="font-size:0.95rem;line-height:1.85;color:#3a3730;max-width:62ch;margin-bottom:0.75rem">This work began in 1999, when Billy McCannon was invited to teach video-making at Portlaoise Prison through an NCAD programme. What started as a filmmaking course evolved into a ten-year collaboration with republican prisoners exploring what it means to tell your own story when your words can be used against you.</p>
+  <p style="font-size:0.95rem;line-height:1.85;color:#3a3730;max-width:62ch;margin-bottom:2.5rem">Republican prisoners operate inside two systems of enforced silence — the IRA's code of secrecy, and state legislation that means anything said on camera could, in principle, be used as evidence. Between these two walls, a man simply speaking about his own experience becomes a radical act. The films that emerged span interview, fictional narrative, and video diary.</p>
   <div class="film-grid">
-    <div class="film-card dark" data-vimeo="11176415" data-title="True Words" data-year="2009">
+    <div class="film-card" data-vimeo="11176415" data-title="True Words" data-year="2009">
   <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
   <div class="film-card-body">
     <p class="film-card-tag">Documentary</p>
@@ -170,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
     <span class="film-card-play">▶ Watch</span>
   </div>
 </div>
-    <div class="film-card dark" data-vimeo="10806264" data-title="Walls Behind Walls" data-year="2008">
+    <div class="film-card" data-vimeo="10806264" data-title="Walls Behind Walls" data-year="2008">
   <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
   <div class="film-card-body">
     <p class="film-card-tag">Installation</p>
@@ -179,16 +185,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
     <span class="film-card-play">▶ Watch</span>
   </div>
 </div>
-    <div class="film-card dark" data-vimeo="10581700" data-title="Gate Fever" data-year="2007">
+    <div class="film-card" data-vimeo="1175738534" data-title="Cell 26" data-year="2024">
   <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
   <div class="film-card-body">
     <p class="film-card-tag">Documentary</p>
-    <h3 class="film-card-title">Gate Fever</h3>
-    <p class="film-card-year">2007</p>
+    <h3 class="film-card-title">Cell 26</h3>
+    <p class="film-card-year">2024</p>
     <span class="film-card-play">▶ Watch</span>
   </div>
 </div>
-    <div class="film-card dark" data-vimeo="593255411" data-title="Who Fears to Speak" data-year="2009">
+    <div class="film-card" data-vimeo="593255411" data-title="Who Fears to Speak" data-year="2009">
   <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
   <div class="film-card-body">
     <p class="film-card-tag">Documentary</p>
@@ -199,8 +205,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 </div>
   </div>
 </section>
-<section class="film-section">
-  <p class="section-label">Works Works · Community Films</p>
+<section class="film-section" style="border-top:3px solid var(--mid)">
+  <div style="width:100%;overflow:hidden;margin-bottom:2rem">
+    <img src="https://photos.smugmug.com/Website-Stills/i-2KRWj4L/0/Lc3fkFfRBZVgzsbg6mBxF9NxWrdMGP3x7xKv9wNkb/XL/Ailbhe%26Niamh%20audience%20crop-XL.jpg" alt="Works Works community film" style="width:100%;height:400px;object-fit:cover;object-position:center;display:block">
+  </div>
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--ink);margin-bottom:0.5rem;line-height:1.1">Works Works</h2><p style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:1.5rem">Community Films · Dublin</p>
+  <p style="font-size:0.95rem;line-height:1.85;color:#3a3730;max-width:62ch;margin-bottom:0.75rem">Works Works applied the same methodology to a different world — Dublin neighbourhoods navigating planning disputes, community politics, and everyday life. The same principle held: the people in front of the camera are also the authors of what is made. Films were built with communities, not about them.</p>
+  <p style="font-size:0.95rem;line-height:1.85;color:#3a3730;max-width:62ch;margin-bottom:2.5rem">The results are small films with real stakes — a Bord Pleanála submission made by the people it affected, a summer afternoon documented from the inside, a portrait of a community that rarely sees itself on screen.</p>
   <div class="film-grid">
     <div class="film-card" data-vimeo="27193954" data-title="Cie Choire" data-year="2011">
   <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>

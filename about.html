@@ -11,7 +11,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
 .nav-logo:hover{color:var(--ink)}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
@@ -40,9 +40,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 
 @media(max-width:900px){
   nav{padding:0}
-  .nav-inner{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
-  .nav-links a{font-size:0.65rem}
+  .nav-inner{padding:1rem 1.5rem;min-height:3.5rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
+  .nav-links a{font-size:0.6rem;letter-spacing:0.05em}
   .page-hero{padding:7rem 2rem 3rem}
   .bio-section{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem}
   .page-footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
@@ -69,14 +69,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
   <h1 class="page-title">About</h1>
 </section>
 
-<section class="bio-section">
+<section class="bio-section" style="background:#e0dbd0;padding:4rem 5rem">
   <div class="bio-aside">
-    <div><p class="stat-number">35</p><p class="stat-label">Years filmmaking</p></div>
-    <div><p class="stat-number">10</p><p class="stat-label">Walls Behind Walls · Portlaoise Prison</p></div>
-    <div><p class="stat-number">MA</p><p class="stat-label">Fine Art · NCAD</p></div>
+    <img src="https://photos.smugmug.com/Website-Stills/i-hRS7dpK/0/KsDZgq4LxzLtxgVvLwF2fxd2JHwgqJxRXWcBPJ2j4/X2/breathless-X2.jpg" alt="Billy McCannon" style="width:100%;height:auto;display:block">
   </div>
   <div class="bio-body">
-    <p>Billy McCannon is an Irish filmmaker and participatory arts practitioner with over 35 years of experience across drama, documentary and community arts. He is the founder and managing director of Amulet Studios, a Dublin-based digital cinema studio, and holds an MA in Fine Art from NCAD, where he lectured in Fine Art from 2000 to 2009.</p>
+    <p style="font-size:1.15rem;line-height:1.9;color:#1a1814;font-weight:400;margin-bottom:1.3rem">Billy McCannon is an Irish filmmaker and participatory arts practitioner with over 35 years of experience across drama, documentary and community arts. He is the founder and managing director of Amulet Studios, a Dublin-based digital cinema studio, and holds an MA in Fine Art from NCAD, where he lectured in Fine Art from 2000 to 2009.</p>
     <p>His short films have won awards at the Galway Film Fleadh, Courmayeur International Film Festival and the Boston Irish Film Festival, and have been broadcast on Channel 4, RTÉ, ZDF Germany, Showtime Australia and Tara Television USA.</p>
     <p>A founding member of Film Base, he chaired the organisation during the successful campaign to establish the Irish Film Board, helping build the infrastructure that enabled independent Irish production to flourish.</p>
     <p>From 1999 to 2009 he developed the <em>Walls Behind Walls</em> project in Portlaoise Prison — a decade of filmmaking with former combatants using a methodology rooted in Theatre of the Oppressed that gave participants full ownership of their recorded stories.</p>
@@ -85,13 +83,4 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
       <li>Founder &amp; MD, Amulet Studios — Dublin 8</li>
       <li>Founding Member, Film Base</li>
       <li>MA Fine Art, NCAD · Lecturer NCAD 2000–2009</li>
-      <li><a href="mailto:billy@amuletstudios.ie" style="color:var(--rust)">billy@amuletstudios.ie</a></li>
-    </ul>
-  </div>
-</section>
-
-<footer class="page-footer">
-  <p>© 2026 Billy McCannon / Amulet Studios</p>
-  <nav class="footer-nav">
-    <a href="index.html">Home</a>
-    <a href="films.html">Films
+      <li><a href="/cdn-cgi/l/email-protection#e082898c8c99a0818d958c859493949584898f93ce8985" style="color:var(--rust)"><span class="__cf_email__" data-cfemail="93f1f

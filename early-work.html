@@ -12,7 +12,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
 body.modal-open{overflow:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
 .nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
 .nav-logo:hover{color:#8b3a2a}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
   .page-hero{grid-template-columns:1fr;gap:2rem;padding:7rem 2rem 3rem}
   .page-hero.dark{padding:7rem 2rem 3rem}
   .content-section{padding:3rem 2rem}
@@ -146,16 +146,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
   </div>
 </nav>
 
-<section class="page-hero">
+<div style="width:100%;overflow:hidden;padding-top:60px">
+  <img src="https://photos.smugmug.com/Website-Stills/i-WMzL8KS/0/KzzDSD8KHfHQR7GbrxVThnzpDRCT5rH7Z2zLf7rJH/L/door%20armed-L.jpg" alt="Early Work still" style="width:100%;height:500px;object-fit:cover;object-position:center;display:block">
+</div>
+<section class="page-hero" style="grid-template-columns:1fr;padding-bottom:0">
   <div>
     <a href="films.html" class="back-link">← Back to Films</a>
     <p class="page-tag">Short Films · 1988–2004</p>
     <h1 class="page-title">Early Work</h1>
   </div>
-  <div class="page-hero-right">
-    <p>Short films shot on celluloid. Cork Film Festival, IFB Short Cuts, international broadcast and acquisition.</p>
-    <p><em>Recoil</em> won Best Irish Short at the Galway Film Fleadh, Best International Short at Courmayeur, and Best Short at the Boston Irish Film Festival. <em>One More Shot</em> was acquired by ZDF Germany, Showtime Australia and Tara Television USA.</p>
-  </div>
+</section>
+
+<section class="film-section" style="border-bottom:1px solid rgba(0,0,0,0.08)">
+  <p style="font-size:0.95rem;line-height:1.85;color:#3a3730;max-width:60ch">Short films shot on celluloid. Cork Film Festival, IFB Short Cuts, international broadcast and acquisition. <em>Recoil</em> won Best Irish Short at the Galway Film Fleadh, Best International Short at Courmayeur, and Best Short at the Boston Irish Film Festival. <em>One More Shot</em> was acquired by ZDF Germany, Showtime Australia and Tara Television USA.</p>
 </section>
 <section class="film-section">
   <p class="section-label">Films</p>
@@ -166,6 +169,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
     <p class="film-card-tag">Showreel</p>
     <h3 class="film-card-title">Short Films Showreel</h3>
     <p class="film-card-year">1988–2004</p>
+    <span class="film-card-play">▶ Watch</span>
+  </div>
+</div>
+    <div class="film-card" data-vimeo="9407693" data-title="Recoil" data-year="2004">
+  <div class="film-thumb"><div class="film-thumb-symbol">◎</div></div>
+  <div class="film-card-body">
+    <p class="film-card-tag">Short Film</p>
+    <h3 class="film-card-title">Recoil</h3>
+    <p class="film-card-year">2004</p>
+    <p class="film-card-desc">Best Irish Short · Galway Film Fleadh · Best International Short · Courmayeur · Best Short · Boston Irish Film Festival</p>
     <span class="film-card-play">▶ Watch</span>
   </div>
 </div>

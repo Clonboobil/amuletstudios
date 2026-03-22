@@ -12,7 +12,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
 body.modal-open{overflow:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
 .nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
 .nav-logo:hover{color:#8b3a2a}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
@@ -29,13 +29,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 .page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.5rem}
 .page-subtitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--mid)}
 .page-hero.dark .page-subtitle{color:rgba(244,240,232,0.5)}
-.page-hero-right p{font-size:0.95rem;line-height:1.85;color:#3a3730;margin-bottom:1rem}
+.page-hero-right p{font-size:1.05rem;line-height:1.85;color:#1a1814;margin-bottom:1rem}
 .page-hero.dark .page-hero-right p{color:rgba(244,240,232,0.75)}
 .page-meta{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid var(--pale);padding-top:1.5rem}
 .page-hero.dark .page-meta{border-top-color:rgba(244,240,232,0.15)}
-.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.25rem}
+.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.25rem}
 .page-hero.dark .meta-label{color:rgba(244,240,232,0.4)}
-.meta-value{font-size:0.85rem}
+.meta-value{font-size:0.75rem}
 .section-label{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
 .section-label::after{content:'';flex:1;height:1px;background:var(--pale)}
 .section-label.light{color:rgba(244,240,232,0.4)}
@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
   .page-hero{grid-template-columns:1fr;gap:2rem;padding:7rem 2rem 3rem}
   .page-hero.dark{padding:7rem 2rem 3rem}
   .content-section{padding:3rem 2rem}
@@ -146,27 +146,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
   </div>
 </nav>
 
-<section class="page-hero">
+<section class="page-hero" style="background:var(--pale)">
   <div>
     <a href="films.html" class="back-link">← Back to Films</a>
     <p class="page-tag">Feature Documentary · Post-Production</p>
     <h1 class="page-title">Everybody<br>Knows</h1>
-    <p class="page-subtitle">Director · Billy McCannon · 2025</p>
+    <p class="page-subtitle">Director · Billy McCannon · 2026</p>
   </div>
-  <div class="page-hero-right">
+  <div class="page-hero-right" style="display:flex;flex-direction:column;justify-content:flex-end">
     <p>A feature documentary exploring global resistance to genocide in Gaza through the lens of Irish post-colonial identity. Three narrative streams woven across four countries and a river.</p>
     <p>The film asks: why do countries that recognise genocide remain silent?</p>
-    <div class="page-meta">
-      <div><p class="meta-label">Format</p><p class="meta-value">Feature · ~90 mins</p></div>
-      <div><p class="meta-label">Status</p><p class="meta-value">Post-Production</p></div>
-      <div><p class="meta-label">Locations</p><p class="meta-value">Ireland · Colombia · UK · USA</p></div>
-    </div>
   </div>
 </section>
 <div class="pull-quote"><blockquote>"We can only see Gaza when we can <em>see ourselves</em> there."</blockquote></div>
 <section class="content-section">
   <div class="content-grid">
-    <div class="content-aside"><h3>Three streams,<br>one river.</h3><p>Three acts · Eight sequences</p></div>
+    <div class="content-aside"><h3>Three streams,<br>one river.</h3></div>
     <div class="content-body">
       <p>A filmmaker takes to the water. His turntable empire has collapsed. The genocide is streaming live and nobody is stopping it. He thought never again meant never again.</p>
       <p>He wrote to Francesca Albanese, the UN's Special Rapporteur on Palestine — sanctioned by the United States, threatened with a pager bomb, made functionally unbankable for doing her job. She didn't respond. He went to Bogotá instead.</p>
@@ -178,31 +173,51 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);bor
       <p>But all across the world people are gathering together in small groups, getting ready for Albanese's kitchen table revolution.</p>
     </div>
   </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem">
+    <div style="background:var(--pale);padding:2rem">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem">Act One</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Bogotá → London → New York</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:#3a3730">From the false positives of Colombia through the Gaza Tribunal in London to the UN General Assembly — the catastrophe of institutional failure made visible.</p>
+    </div>
+    <div style="background:var(--pale);padding:2rem">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem">Act Two</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">The Architecture</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:#3a3730">How does the silence work? The film traces the structures — legal, political, economic — that prevent action despite recognition of genocide.</p>
+    </div>
+    <div style="background:var(--pale);padding:2rem">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem">Act Three</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Ireland · The Liffey</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:#3a3730">Derry, the hunger strike families, Bernadette Devlin McAliskey. And the Liffey — the sculling sequences as resolution, the water carrying everything home.</p>
+    </div>
+  </div>
 </section>
 <section class="content-section dark">
-  <p class="section-label">Key Subjects</p>
-  <div class="card-grid">
-    <div class="card-item"><p class="card-name">Francesca Albanese</p><p class="card-role">UN Special Rapporteur on Palestine</p></div>
-    <div class="card-item"><p class="card-name">Bernadette Devlin McAliskey</p><p class="card-role">Civil rights leader · Ireland</p></div>
-    <div class="card-item"><p class="card-name">Rabbi Dovid Feldman</p><p class="card-role">Neturei Karta · Anti-Zionist Orthodox</p></div>
-    <div class="card-item"><p class="card-name">Asa Winstanley</p><p class="card-role">Electronic Intifada · London</p></div>
-    <div class="card-item"><p class="card-name">Medea Benjamin</p><p class="card-role">CODEPINK · Washington DC</p></div>
-    <div class="card-item"><p class="card-name">Dr. Morgan McMongial</p><p class="card-role">Irish trauma surgeon · Gaza</p></div>
-    <div class="card-item"><p class="card-name">Selena Cruz &amp; Gloria</p><p class="card-role">Colombian collaborators · Bogotá</p></div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start">
+    <div>
+      <p class="section-label light">Key Subjects</p>
+      <div class="card-grid">
+        <div class="card-item"><p class="card-name">Francesca Albanese</p><p class="card-role">UN Special Rapporteur on Palestine</p></div>
+        <div class="card-item"><p class="card-name">Bernadette Devlin McAliskey</p><p class="card-role">Civil rights leader · Ireland</p></div>
+        <div class="card-item"><p class="card-name">Rabbi Dovid Feldman</p><p class="card-role">Neturei Karta · Anti-Zionist Orthodox</p></div>
+        <div class="card-item"><p class="card-name">Asa Winstanley</p><p class="card-role">Electronic Intifada · London</p></div>
+        <div class="card-item"><p class="card-name">Medea Benjamin</p><p class="card-role">CODEPINK · Washington DC</p></div>
+        <div class="card-item"><p class="card-name">Dr. Morgan McMongial</p><p class="card-role">Irish trauma surgeon · Gaza</p></div>
+        <div class="card-item"><p class="card-name">Selena Cruz &amp; Gloria</p><p class="card-role">Colombian collaborators · Bogotá</p></div>
+      </div>
+    </div>
+    <div style="padding-top:3.5rem">
+      <img src="https://photos.smugmug.com/Website-Stills/i-Qtx28zK/0/MbB5kKTGf4CVn6z2nmx3J53FLJqcVsvgKLTmshZ3V/L/Untitled%20-%201%20of%201-L.jpg" alt="Everybody Knows still" style="width:100%;height:auto;display:block">
+    </div>
   </div>
 </section>
 <section class="content-section">
   <div class="content-grid">
     <div class="content-aside"><h3>Press &amp;<br>enquiries.</h3></div>
     <div class="content-body">
-      <p>For press, festival, and co-production enquiries, contact Billy McCannon at Amulet Studios.</p>
-      <p><a href="/cdn-cgi/l/email-protection#36545f5a5a4f76575b435a5342454243525f5945185f53" style="color:var(--rust)"><span class="__cf_email__" data-cfemail="caa8a3a6a6b38aaba7bfa6afbeb9bebfaea3a5b9e4a3af">[email&#160;protected]</span></a></p>
+      <p>For press, festival, and co-production enquiries, contact Sadbh at Amulet Studios.</p>
+      <p><a href="https://amuletstudios.ie/#contact" style="color:var(--rust)">Contact form →</a></p>
     </div>
   </div>
 </section>
 
 <footer class="page-footer">
-  <p>© 2026 Billy McCannon / Amulet Studios</p>
-  <nav class="footer-nav">
-    <a href="index.html">Home</a>
-    <a href="films.html">Films
