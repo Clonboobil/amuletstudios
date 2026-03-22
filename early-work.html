@@ -187,25 +187,6 @@ body { animation: pageFadeIn 0.5s ease forwards; }
   width: 100%;
 }
 
-/* ── Custom cursor ── */
-*, *::before, *::after { cursor: none !important; }
-.cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--rust);
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
-  mix-blend-mode: multiply;
-}
-.cursor-dot.hovering {
-  width: 24px;
-  height: 24px;
-  background: rgba(139,58,42,0.3);
-}
 
 /* ── Page transitions ── */
 .page-transition-out {
@@ -389,40 +370,6 @@ document.querySelectorAll('.film-card[data-vimeo]').forEach(card=>{
 
 
 
-<script>
-// Custom cursor - smooth RAF version
-(function() {
-  var dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  document.body.appendChild(dot);
-
-  var mouseX = 0, mouseY = 0;
-  var dotX = 0, dotY = 0;
-  var raf;
-
-  document.addEventListener('mousemove', function(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.opacity = '1';
-  });
-
-  function animate() {
-    dotX += (mouseX - dotX) * 0.35;
-    dotY += (mouseY - dotY) * 0.35;
-    dot.style.left = dotX + 'px';
-    dot.style.top = dotY + 'px';
-    raf = requestAnimationFrame(animate);
-  }
-  animate();
-
-  document.querySelectorAll('a, button, .film-card, .card-item, .film-panel, .film-item').forEach(function(el) {
-    el.addEventListener('mouseenter', function() { dot.classList.add('hovering'); });
-    el.addEventListener('mouseleave', function() { dot.classList.remove('hovering'); });
-  });
-
-  document.addEventListener('mouseleave', function() { dot.style.opacity = '0'; });
-})();
-</script>
 
 
 <script>
