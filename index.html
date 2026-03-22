@@ -134,6 +134,53 @@ body { animation: pageFadeIn 0.5s ease forwards; }
   transform: translateY(-4px) !important;
   box-shadow: 0 12px 32px rgba(0,0,0,0.18) !important;
 }
+
+/* ── Nav underline slide ── */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--rust);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ── Custom cursor ── */
+*, *::before, *::after { cursor: none !important; }
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rust);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+  mix-blend-mode: multiply;
+}
+.cursor-dot.hovering {
+  width: 24px;
+  height: 24px;
+  background: rgba(139,58,42,0.3);
+}
+
+/* ── Page transitions ── */
+.page-transition-out {
+  animation: pageFadeOut 0.3s ease forwards;
+}
+@keyframes pageFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 </style>
 </head>
 <body>
