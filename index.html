@@ -172,7 +172,6 @@ body { animation: pageFadeIn 0.5s ease forwards; }
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="everybody-knows.html">Everybody Knows</a></li>
-    <li><a href="films.html">Films</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -188,57 +187,89 @@ body { animation: pageFadeIn 0.5s ease forwards; }
     <p style="font-family:'IBM Plex Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(244,240,232,0.8)">View Film →</p>
   </a>
 </div>
-<section class="hero" style="padding-top:0">
-  <div class="hero-left">
+<section class="hero" style="padding-top:0;grid-template-columns:1fr;border-right:none;background:#e0dbd0" id="films">
+  <div class="hero-left" style="border-right:none;max-width:60ch">
     <p class="eyebrow">Filmmaker — Dublin</p>
     <h1 class="hero-name">Billy<br><em>McCannon</em></h1>
     <p class="hero-title">Director · Amulet Studios</p>
     <p class="hero-bio">35 years making films that go where they're not supposed to. Work built on trust, shaped by Irish experience, and pointed at the <strong>architecture of power</strong>.<br><br>Member, Directors Guild of Ireland.</p>
-    <div class="hero-ctas">
-      <a href="#showreel" class="btn-primary">Watch Showreel</a>
-      <a href="films.html" class="btn-ghost">All Films</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <ul class="film-list">
-      <li class="film-item" onclick="location.href='everybody-knows.html'">
-        <span class="film-name">Everybody Knows</span>
-        <span class="film-meta">Feature · Post-Production</span>
-        <span class="film-arrow">→</span>
-      </li>
-      <li class="film-item" onclick="location.href='boots-on-backwards.html'">
-        <span class="film-name">Boots on Backwards</span>
-        <span class="film-meta">Feature · Development</span>
-        <span class="film-arrow">→</span>
-      </li>
-      <li class="film-item" onclick="location.href='participatory.html'">
-        <span class="film-name">Participatory Works</span>
-        <span class="film-meta">Portlaoise · Works Works</span>
-        <span class="film-arrow">→</span>
-      </li>
-      <li class="film-item" onclick="location.href='early-work.html'">
-        <span class="film-name">Early Work</span>
-        <span class="film-meta">Short Films · 1988–2004</span>
-        <span class="film-arrow">→</span>
-      </li>
-      <li class="film-item" onclick="location.href='personal-films.html'">
-        <span class="film-name">Personal Films</span>
-        <span class="film-meta">Ongoing</span>
-        <span class="film-arrow">→</span>
-      </li>
-
-    </ul>
   </div>
 </section>
 
-<section id="showreel">
+<div style="background:#e0dbd0;padding:2rem 5rem 0">
+  <div style="display:flex;gap:4px;align-items:flex-end">
+    <button onclick="showTab('current')" id="tab-current" style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:#a89880;color:#fff;border:none;padding:1rem 3.6rem 1.4rem;cursor:pointer;clip-path:polygon(0 18px,18px 0,100% 0,100% 100%,0 100%)">Production</button>
+    <button onclick="showTab('dev')" id="tab-dev" style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:#c4b99a;color:var(--ink);border:none;padding:1rem 3.6rem 1rem;cursor:pointer;opacity:0.6;clip-path:polygon(0 18px,18px 0,100% 0,100% 100%,0 100%)">In Development</button>
+    <button onclick="showTab('archive')" id="tab-archive" style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:#d4cfc8;color:var(--ink);border:none;padding:1rem 3.6rem 1rem;cursor:pointer;opacity:0.6;clip-path:polygon(0 18px,18px 0,100% 0,100% 100%,0 100%)">Filmography</button>
+  </div>
+</div>
+
+<div id="panel-current" style="padding:0 5rem 3rem;background:#a89880">
+  <a class="film-panel" href="everybody-knows.html" style="display:grid;grid-template-columns:512px 1fr 2fr auto;gap:2rem;align-items:center">
+    <img src="https://photos.smugmug.com/Website-Stills/i-F3vQWwM/0/KL8Ff3PL9GgFM6dmNkmggqtmfPdM7L4L8bhgq6WJv/X3/Untitled%20-%201%20of%201%20%286%29-X3.jpg" style="width:512px;height:384px;object-fit:cover;display:block">
+    <div><p class="panel-number" style="color:rgba(244,240,232,0.4)">01</p><p class="panel-tag" style="color:var(--warm)">Feature Documentary</p><p class="panel-status" style="color:rgba(244,240,232,0.5)">Post-Production · 2026</p></div>
+    <div><h2 class="panel-title" style="color:#fff">Everybody Knows</h2><p class="panel-desc" style="color:rgba(244,240,232,0.8)">A four-country investigation into global resistance to genocide in Gaza through the lens of Irish post-colonial identity.</p></div>
+    <div class="panel-arrow" style="color:var(--warm)">→</div>
+  </a>
+</div>
+
+<div id="panel-dev" style="padding:0 5rem 3rem;background:#c4b99a;display:none">
+  <a class="film-panel" href="boots-on-backwards.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
+    <img src="https://photos.smugmug.com/Website-Stills/i-WMzL8KS/0/KFMnTKS5nK7mwV8hfp8hR9MH8vsfJkPwdPNb7WqfG/XL/door%20armed-XL.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
+    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">01</p><p class="panel-tag" style="color:var(--rust)">Feature Documentary</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">In Development · 2025</p></div>
+    <div><h2 class="panel-title" style="color:var(--ink)">Boots on Backwards</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">Colombia's false positives scandal. Over 6,400 civilians murdered. Developed with Luz Marina Bernal Parra.</p></div>
+    <div class="panel-arrow" style="color:var(--rust)">→</div>
+  </a>
+  <a class="film-panel" href="the-witness.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
+    <img src="https://photos.smugmug.com/Website-Stills/i-wR389Mh/0/Kq4JXxQNRTM8L4rrc7nPgZ6f586HsFNZP6hzsVr8Q/X3/Untitled%20-%201%20of%201%20%289%29-X3.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
+    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">02</p><p class="panel-tag" style="color:var(--rust)">Feature Documentary</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">In Development · 2025</p></div>
+    <div><h2 class="panel-title" style="color:var(--ink)">The Witness</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">An Irish trauma surgeon goes to Gaza three times and begins building the prosecution case.</p></div>
+    <div class="panel-arrow" style="color:var(--rust)">→</div>
+  </a>
+</div>
+
+<div id="panel-archive" style="padding:0 5rem 3rem;background:#d4cfc8;display:none">
+  <a class="film-panel" href="participatory.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
+    <img src="https://photos.smugmug.com/Website-Stills/i-jmTWNVH/0/KmnpXgjxnBCPLgnRpwxhZgXHmDkVSjs4TnDHbbM9S/M/wally-M.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
+    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">01</p><p class="panel-tag" style="color:var(--rust)">Participatory Works</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">1999–present</p></div>
+    <div><h2 class="panel-title" style="color:var(--ink)">Participatory Works</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">A decade inside Portlaoise Prison with former combatants, and community documentary films made with Dublin neighbourhoods.</p></div>
+    <div class="panel-arrow" style="color:var(--rust)">→</div>
+  </a>
+  <a class="film-panel" href="early-work.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
+    <img src="https://photos.smugmug.com/Website-Stills/i-NdQsqF5/0/KDFv9SsXSdPfLchK4q59pj3ffNb56hhp4ZWPdQqKW/XL/Library%20-%209414-XL.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
+    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">02</p><p class="panel-tag" style="color:var(--rust)">Short Features</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">1988–2004</p></div>
+    <div><h2 class="panel-title" style="color:var(--ink)">Short Features</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">Short films shot on celluloid. Cork Film Festival, IFB Short Cuts, international broadcast and acquisition.</p></div>
+    <div class="panel-arrow" style="color:var(--rust)">→</div>
+  </a>
+  <a class="film-panel" href="personal-films.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
+    <img src="https://photos.smugmug.com/Website-Stills/i-xCB6Bz9/0/Ncss5Wwn942wFg8S8zR2wnNkhrMP9QhTGkGKKfBNf/XL/brazil%20girl%205-XL.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
+    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">03</p><p class="panel-tag" style="color:var(--rust)">Personal Films</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">Ongoing</p></div>
+    <div><h2 class="panel-title" style="color:var(--ink)">Personal Films</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">Films made outside commission — on their own terms, for their own reasons.</p></div>
+    <div class="panel-arrow" style="color:var(--rust)">→</div>
+  </a>
+</div>
+
+<script>
+function showTab(name) {
+  ['current','dev','archive'].forEach(function(t) {
+    document.getElementById('panel-' + t).style.display = 'none';
+    document.getElementById('tab-' + t).style.opacity = '0.6';
+    document.getElementById('tab-' + t).style.paddingBottom = '1rem';
+  });
+  document.getElementById('panel-' + name).style.display = 'block';
+  var active = document.getElementById('tab-' + name);
+  active.style.opacity = '1';
+  active.style.paddingBottom = name === 'current' ? '1.4rem' : '1rem';
+}
+</script>
+
+<section id="showreel" style="margin-top:4rem">
   <p class="showreel-label">Showreel</p>
   <div class="showreel-wrapper">
     <iframe src="https://player.vimeo.com/video/7683056?byline=0&portrait=0&title=0&color=c9a96e" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   </div>
   <div class="showreel-caption">
     <p>Amulet Studios · Dublin</p>
-    <a href="https://vimeo.com/amulet" target="_blank" rel="noopener">View full channel on Vimeo ↗</a>
   </div>
 </section>
 
@@ -258,7 +289,7 @@ body { animation: pageFadeIn 0.5s ease forwards; }
 
 <section id="contact">
   <div>
-    <h2>Let's make<br>something<br><em>true.</em></h2>
+    <h2>Let's make<br>something<br><em>we like.</em></h2>
   </div>
   <div class="contact-details">
     <div class="contact-row">
