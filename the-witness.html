@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Witness — Billy McCannon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0e0c09;--paper:#f4f0e8;--warm:#c9a96e;--rust:#8b3a2a;--pale:#e8e3d8;--mid:#7a7468}
+body{background:var(--ink);color:var(--paper);font-family:'IBM Plex Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.gate{text-align:center;padding:3rem}
+.gate-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.gate-subtitle{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:rgba(244,240,232,0.4);margin-bottom:3rem}
+.gate-input{font-family:'IBM Plex Mono',monospace;font-size:0.9rem;letter-spacing:0.1em;padding:0.9rem 1.5rem;background:rgba(244,240,232,0.06);border:1px solid rgba(244,240,232,0.2);color:var(--paper);outline:none;width:260px;text-align:center;display:block;margin:0 auto 1rem}
+.gate-input::placeholder{color:rgba(244,240,232,0.25)}
+.gate-input:focus{border-color:var(--warm)}
+.gate-btn{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--paper);background:var(--rust);border:none;padding:0.85rem 2rem;cursor:pointer;display:block;margin:0 auto}
+.gate-btn:hover{background:#6e2e21}
+.gate-error{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--rust);margin-top:1rem;opacity:0;transition:opacity 0.3s}
+.gate-error.visible{opacity:1}
+</style>
+</head>
+<body>
+<div class="gate">
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm);margin-bottom:1rem">Feature Documentary · In Development</p>
+  <h1 class="gate-title">The Witness</h1>
+  <p class="gate-subtitle">Director · Billy McCannon</p>
+  <input class="gate-input" type="password" id="pw" placeholder="Enter password" autocomplete="off">
+  <button class="gate-btn" onclick="check()">Enter</button>
+  <p class="gate-error" id="err">Incorrect password</p>
+</div>
+<script>
+document.getElementById('pw').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') check();
+});
+function check() {
+  var pw = document.getElementById('pw').value;
+  if (pw === 'Bilko') {
+    window.location.href = 'morgan.html';
+  } else {
+    var err = document.getElementById('err');
+    err.classList.add('visible');
+    document.getElementById('pw').value = '';
+    setTimeout(function() { err.classList.remove('visible'); }, 2000);
+  }
+}
+</script>
+</body>
+</html>
