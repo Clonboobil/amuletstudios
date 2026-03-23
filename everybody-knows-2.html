@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everybody Knows — Billy McCannon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0e0c09;--paper:#f4f0e8;--warm:#c9a96e;--rust:#8b3a2a;--pale:#e8e3d8;--mid:#7a7468}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
+body.modal-open{overflow:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
+.nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
+.nav-logo:hover{color:#8b3a2a}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8b3a2a;text-decoration:none;font-weight:400}
+.nav-links a:hover{color:#8b3a2a}
+.page-hero{padding:8rem 5rem 5rem;border-bottom:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end}
+.page-hero.dark{background:var(--ink);color:var(--paper);border-bottom:none}
+.back-link{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:2rem;transition:color 0.2s}
+.page-hero.dark .back-link{color:rgba(244,240,232,0.4)}
+.back-link:hover{color:var(--rust)}
+.page-hero.dark .back-link:hover{color:var(--warm)}
+.page-tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.2rem}
+.page-hero.dark .page-tag{color:var(--warm)}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--mid)}
+.page-hero.dark .page-subtitle{color:rgba(244,240,232,0.5)}
+.page-hero-right p{font-size:1.05rem;line-height:1.85;color:#1a1814;margin-bottom:1rem}
+.page-hero.dark .page-hero-right p{color:rgba(244,240,232,0.75)}
+.page-meta{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid var(--pale);padding-top:1.5rem}
+.page-hero.dark .page-meta{border-top-color:rgba(244,240,232,0.15)}
+.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.25rem}
+.page-hero.dark .meta-label{color:rgba(244,240,232,0.4)}
+.meta-value{font-size:0.75rem}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--pale)}
+.section-label.light{color:rgba(244,240,232,0.4)}
+.section-label.light::after{background:rgba(244,240,232,0.1)}
+.content-section{padding:5rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+.content-section.dark{background:var(--ink);color:var(--paper);border-bottom:none}
+.content-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem}
+.content-aside h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1.1;margin-bottom:0.5rem}
+.content-aside p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--mid)}
+.content-section.dark .content-aside p{color:rgba(244,240,232,0.4)}
+.content-body p{font-size:0.9rem;line-height:1.85;color:#3a3730;margin-bottom:1rem;max-width:60ch}
+.content-section.dark .content-body p{color:rgba(244,240,232,0.75)}
+.pull-quote{padding:5rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+.pull-quote blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-style:italic;line-height:1.4;max-width:24ch}
+.pull-quote blockquote em{color:var(--rust);font-style:normal}
+.film-section{padding:5rem}
+.film-section.dark{background:var(--ink)}
+.film-section+.film-section{border-top:1px solid rgba(0,0,0,0.06)}
+.film-section.dark+.film-section,.film-section+.film-section.dark{border-top:none}
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.film-card{position:relative;cursor:pointer;overflow:hidden;background:var(--pale)}
+.film-card.dark{background:var(--ink)}
+.film-thumb{padding-bottom:56.25%;position:relative;overflow:hidden;background:#ddd8cc}
+.film-card.dark .film-thumb{background:#1a1714}
+.film-thumb-symbol{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--rust);opacity:0.08;transition:transform 0.5s,opacity 0.3s}
+.film-card.dark .film-thumb-symbol{color:var(--warm)}
+.film-card:hover .film-thumb-symbol{transform:scale(1.15);opacity:0.14}
+.film-card-body{padding:1.5rem}
+.film-card-tag{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem}
+.film-card.dark .film-card-tag{color:var(--warm)}
+.film-card-title{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--ink);margin-bottom:0.4rem;transition:color 0.2s}
+.film-card.dark .film-card-title{color:var(--paper)}
+.film-card:hover .film-card-title{color:var(--rust)}
+.film-card.dark:hover .film-card-title{color:var(--warm)}
+.film-card-year{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--mid);margin-bottom:0.5rem}
+.film-card.dark .film-card-year{color:rgba(244,240,232,0.35)}
+.film-card-desc{font-size:0.8rem;line-height:1.65;color:#3a3730}
+.film-card.dark .film-card-desc{color:rgba(244,240,232,0.5)}
+.film-card-play{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-top:0.75rem;display:inline-block;opacity:0;transform:translateY(4px);transition:opacity 0.2s,transform 0.2s}
+.film-card.dark .film-card-play{color:var(--warm)}
+.film-card:hover .film-card-play{opacity:1;transform:translateY(0)}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2rem}
+.card-item{background:rgba(244,240,232,0.04);padding:1rem;border:1px solid rgba(244,240,232,0.08)}
+.card-name{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--warm);margin-bottom:0.4rem}
+.card-role{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(244,240,232,0.4);line-height:1.5}
+.film-panel{border-top:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 2fr auto;gap:4rem;padding:2.5rem 0;text-decoration:none;color:var(--ink);transition:background 0.2s;cursor:pointer}
+.film-panel:last-child{border-bottom:1px solid rgba(0,0,0,0.08)}
+.film-panel:hover{background:rgba(139,58,42,0.02)}
+.film-panel:hover .panel-title{color:var(--rust)}
+.film-panel:hover .panel-arrow{opacity:1;transform:translateX(0)}
+.panel-number{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;color:var(--mid);margin-bottom:0.5rem}
+.panel-tag{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);margin-bottom:0.4rem}
+.panel-status{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;color:var(--mid)}
+.panel-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);font-style:italic;font-weight:700;line-height:1.05;margin-bottom:0.75rem;transition:color 0.2s}
+.panel-desc{font-size:0.9rem;line-height:1.8;color:#3a3730;max-width:50ch}
+.panel-arrow{font-size:1.5rem;color:var(--rust);align-self:center;opacity:0;transform:translateX(-8px);transition:opacity 0.2s,transform 0.2s}
+.wip-banner{margin:2rem 5rem 0;padding:1rem 1.5rem;background:var(--pale);border-left:3px solid var(--warm)}
+.wip-banner p{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--mid)}
+.modal-overlay{position:fixed;inset:0;background:rgba(14,12,9,0.94);z-index:10000;display:none;align-items:center;justify-content:center;padding:2rem}
+.modal-overlay.active{display:flex}
+.modal{background:var(--ink);max-width:640px;width:100%;position:relative}
+.modal-close{position:absolute;top:-2.5rem;right:0;background:none;border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);transition:color 0.2s}
+.modal-close:hover{color:var(--warm)}
+.modal-title-bar{padding:1.5rem 2rem 1rem;display:flex;justify-content:space-between;align-items:baseline}
+.modal-film-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--paper)}
+.modal-film-year{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.35)}
+.modal-video{position:relative;padding-bottom:56.25%;background:#000}
+.modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.page-footer{background:var(--ink);padding:1.5rem 5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,240,232,0.08)}
+.page-footer p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.25)}
+.footer-nav{display:flex;gap:2rem}
+.footer-nav a{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);text-decoration:none}
+.footer-nav a:hover{color:var(--warm)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
+  .page-hero{grid-template-columns:1fr;gap:2rem;padding:7rem 2rem 3rem}
+  .page-hero.dark{padding:7rem 2rem 3rem}
+  .content-section{padding:3rem 2rem}
+  .content-grid{grid-template-columns:1fr;gap:2rem}
+  .film-section{padding:3rem 2rem}
+  .film-grid{grid-template-columns:1fr 1fr}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .pull-quote{padding:3rem 2rem}
+  .film-panel{grid-template-columns:1fr;gap:1rem;padding:2rem 0}
+  .panel-arrow{display:none}
+  .wip-banner{margin:2rem 2rem 0}
+  .page-footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
+  .footer-nav{justify-content:center}
+  .page-meta{grid-template-columns:1fr 1fr}
+}
+
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── Pull quote reveal ── */
+.pull-quote blockquote {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.pull-quote.visible blockquote {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Page load fade ── */
+body { animation: pageFadeIn 0.5s ease forwards; }
+@keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Film card lift ── */
+.film-card, .card-item {
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+.film-card:hover, .card-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18) !important;
+}
+
+/* ── Portrait stagger ── */
+.card-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.card-item.portrait-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Nav underline slide ── */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--rust);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+/* ── Page transitions ── */
+.page-transition-out {
+  animation: pageFadeOut 0.3s ease forwards;
+}
+@keyframes pageFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+  <a class="nav-logo" href="index.html">Billy McCannon</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="everybody-knows.html">Everybody Knows</a></li>
+    <li><a href="films.html">Films</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  </div>
+</nav>
+
+<div style="width:100%;margin-top:3.5rem;position:relative;padding-bottom:56.25%;background:#050403">
+  <iframe src="https://player.vimeo.com/video/1164319502?color=c9a96e&title=0&byline=0&portrait=0&autoplay=0" style="position:absolute;inset:0;width:100%;height:100%;border:none" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
+<section class="page-hero" style="background:var(--pale)">
+  <div>
+    <a href="films.html" class="back-link">← Back to Films</a>
+    <blockquote class="hero-quote" style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-style:italic;line-height:1.4;color:var(--ink);margin:1.5rem 0 1rem;opacity:0;transform:scale(0.97);transition:opacity 0.9s ease 0.3s,transform 0.9s ease 0.3s">We can only see Gaza when we can <em style="color:var(--rust);font-style:normal">see ourselves</em> in it.</blockquote>
+    <p class="page-tag" style="margin-top:0.5rem">Feature Documentary · Post-Production · 2026</p>
+    <p class="page-subtitle">Director · Billy McCannon · Producer · Sadbh McCannon</p>
+  </div>
+  <div class="page-hero-right" style="display:flex;flex-direction:column;justify-content:flex-end">
+    <p>A feature documentary exploring global resistance to genocide in Gaza through the lens of Irish post-colonial identity. Three narrative streams woven across four countries and a river.</p>
+    <p>The film asks: why do countries that recognise genocide remain silent?</p>
+  </div>
+</section>
+<section class="content-section">
+  <div class="content-grid" style="align-items:start">
+    <div class="content-aside" style="position:sticky;top:5rem">
+      <h3 style="margin-bottom:1.5rem">Three streams,<br>one river.</h3>
+      <img src="https://photos.smugmug.com/Website-Stills/i-Qtx28zK/0/LG5hGRPdBdBBsjvnx8BGGBKH5L6zLDsrVrBHCwtLX/L/Untitled%20-%201%20of%201-L.jpg" alt="Billy McCannon" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block">
+    </div>
+    <div class="content-body">
+      <p>A filmmaker takes to the water. His turntable empire has collapsed. The genocide is streaming live and nobody is stopping it. He thought never again meant never again.</p>
+      <p>He wrote to Francesca Albanese, the UN's Special Rapporteur on Palestine — sanctioned by the United States, threatened with a pager bomb, made functionally unbankable for doing her job. She didn't respond. He went to Bogotá instead.</p>
+      <p>What begins as a search for the resistance becomes something more unsettling — a recognition. Following the thread from Dublin to Bogotá to Derry to London to New York, Billy McCannon discovers that what is happening in Palestine is not new, not exotic, not someone else's story. It is bog standard state violence on serious drugs. The architecture was already in place, waiting in the long grass, long before October 7th.</p>
+      <p>In Colombia he finds the false positives — six thousand four hundred young men lured with the promise of work, dressed in uniforms, taken to active combat zones and killed so the state could prove it was winning the war. He recognises the shape of it immediately. He grew up inside this.</p>
+      <p>The Colombians learned the ways of colonial oppression from the Israelis. The Israelis learned from the British. Ireland was the laboratory. All threads go through London.</p>
+      <p>From Bernadette Devlin McAliskey, who has lived inside this architecture her entire life, to Asa Winstanley on the weaponisation of antisemitism, to Rabbi Feldman of Neturei Karta speaking from inside Jewish tradition against Zionism, to Medea Benjamin on the capture of American political life, to the streets of London where pensioners are arrested on terrorism charges for holding cardboard signs — the film traces a single continuous argument.</p>
+      <p>In New York, Colombia's President Petro invokes United for Peace at the UN General Assembly. It is the last instrument available. By nightfall his visa has been revoked.</p>
+      <p>But all across the world people are gathering together in small groups, getting ready for Albanese's kitchen table revolution.</p>
+    </div>
+  </div>
+  <div style="width:100%;overflow:hidden;margin-top:3rem">
+    <img src="https://photos.smugmug.com/Website-Stills/i-CtSKS2D/0/MWMfHJsnchk59NLjGvLtQxrcSXMGwNPdMKSgbwRkN/XL/Untitled%20-%201%20of%201%20%287%29-XL.jpg" alt="Everybody Knows" style="width:100%;height:auto;display:block">
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem">
+    <div style="background:var(--pale);padding:2rem">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem">Act One</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Bogotá → London → New York</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:#3a3730">From the false positives of Colombia through the Gaza Tribunal in London to the UN General Assembly — the catastrophe of institutional failure made visible.</p>
+    </div>
+    <div style="background:var(--pale);padding:2rem">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem">Act Two</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">The Architecture</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:#3a3730">How does the silence work? The film traces the structures — legal, political, economic — that prevent action despite recognition of genocide.</p>
+    </div>
+    <div style="background:var(--pale);padding:2rem">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem">Act Three</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Ireland · The Liffey</h3>
+      <p style="font-size:0.85rem;line-height:1.7;color:#3a3730">Derry, the hunger strike families, Bernadette Devlin McAliskey. And the Liffey — the sculling sequences as resolution, the water carrying everything home.</p>
+    </div>
+  </div>
+</section>
+<section class="content-section" style="background:var(--pale)">
+  <p class="section-label">Key Subjects</p>
+  <div style="border:9px solid var(--ink);display:block;background:var(--ink)">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px">
+      <div class="card-item" data-subject="mccann" style="display:flex;flex-direction:column;gap:0.5rem;background:var(--ink)"><img src="https://photos.smugmug.com/Website-Stills/i-qZRv6Wj/0/LGzt2kNdh8bJ9NKbSg2dpRmHGL4xcJM8vjxLwH9bv/XL/Untitled%20-%201%20of%201%20%2816%29-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top"><p class="card-name">Eamonn McCann</p><p class="card-role">Civil rights leader · Derry</p></div>
+      <div class="card-item" data-subject="devlin" style="display:flex;flex-direction:column;gap:0.5rem;background:var(--ink)"><img src="https://photos.smugmug.com/Website-Stills/i-2NsKJXG/0/LQBV6J6JxCnSkTTvhvDWtXQWJmfx85KM76Vtd5ctB/XL/Untitled%20-%201%20of%201%20%2815%29-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top"><p class="card-name">Bernadette Devlin McAliskey</p><p class="card-role">Civil rights leader · Ireland</p></div>
+      <div class="card-item" data-subject="rabbi" style="display:flex;flex-direction:column;gap:0.75rem;background:var(--ink)">
+        <img src="https://photos.smugmug.com/Website-Stills/i-F3vQWwM/0/KL8Ff3PL9GgFM6dmNkmggqtmfPdM7L4L8bhgq6WJv/X3/Untitled%20-%201%20of%201%20%286%29-X3.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top">
+        <p class="card-name">Rabbi Dovid Feldman</p><p class="card-role">Neturei Karta · Anti-Zionist Orthodox</p>
+      </div>
+      <div class="card-item" data-subject="selena" style="display:flex;flex-direction:column;gap:0.75rem;background:var(--ink)">
+        <img src="https://photos.smugmug.com/Website-Stills/i-8ZZsgJT/0/KwJmftKDsQgK7ZCgv9gjTcqS8mg4D5TGx9Gmv2LB2/XL/Untitled%20-%201%20of%201%20%284%29-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top">
+        <p class="card-name">Selena Cruz</p><p class="card-role">Colombian collaborator · Bogotá</p>
+      </div>
+      <div class="card-item" data-subject="medea" style="display:flex;flex-direction:column;gap:0.5rem;background:var(--ink)"><img src="https://photos.smugmug.com/Website-Stills/i-HtBV7Px/0/M9HFJMKccwz9mc2gdVK655PHQ29BmhBmxhwk53696/XL/medea-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top"><p class="card-name">Medea Benjamin</p><p class="card-role">CODEPINK · Washington DC</p></div>
+      <div class="card-item" data-subject="morgan" style="display:flex;flex-direction:column;gap:0.75rem;background:var(--ink)">
+        <img src="https://photos.smugmug.com/Website-Stills/i-wR389Mh/0/KX8prrRNgpVSdS3SzHzBzFWHLm3GMJz9k3Mv6SxsF/XL/Untitled%20-%201%20of%201%20%289%29-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top">
+        <p class="card-name">Dr. Morgan McMongial</p><p class="card-role">Irish trauma surgeon · Gaza</p>
+      </div>
+      <div class="card-item" data-subject="asa" style="display:flex;flex-direction:column;gap:0.75rem;background:var(--ink)">
+        <img src="https://photos.smugmug.com/Website-Stills/i-vxd25qF/0/NKBp3tN58HkbsqjL3x9jmt3dP732KxxwqDG3WPXcz/XL/Untitled%20-%201%20of%201%20%2812%29-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top">
+        <p class="card-name">Asa Winstanley</p><p class="card-role">Electronic Intifada · London</p>
+      </div>
+      <div class="card-item" data-subject="corbyn" style="display:flex;flex-direction:column;gap:0.75rem;background:var(--ink)">
+        <img src="https://photos.smugmug.com/Website-Stills/i-WtHbDv7/0/LZTWdRsjVGntsBrkP3n7QCghQ3X9xnxQMFsGv37Hb/X3/Untitled%20-%201%20of%201%20%2810%29-X3.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top">
+        <p class="card-name">Jeremy Corbyn</p><p class="card-role">Former Labour leader · London</p>
+      </div>
+      <div class="card-item" data-subject="browne" style="display:flex;flex-direction:column;gap:0.75rem;background:var(--ink)">
+        <img src="https://photos.smugmug.com/Website-Stills/i-pHpxjtG/0/Kn9pgmJ9SHdfq4Bh8ZkMDGctXCTZKV99p5kczMBwX/XL/Untitled%20-%201%20of%201%20%288%29-XL.jpg" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top">
+        <p class="card-name">Prof. Brendan Browne</p><p class="card-role">Conflict scholar · Trinity College</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-aside"><h3>Press &amp;<br>enquiries.</h3></div>
+    <div class="content-body">
+      <p>For press, festival, and co-production enquiries, contact Sadbh at Amulet Studios.</p>
+      <p><a href="https://amuletstudios.ie/#contact" style="color:var(--rust)">Contact form →</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+
+</footer>
+
+<div id="subject-modal" style="display:none;position:fixed;inset:0;background:rgba(14,12,9,0.94);z-index:10000;align-items:center;justify-content:center;padding:2rem">
+  <div style="background:#0e0c09;max-width:640px;width:100%;position:relative">
+    <button id="modal-close-btn" style="position:absolute;top:-2rem;right:0;background:none;border:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5)">&#x2715; Close</button>
+    <img id="subject-modal-img" src="" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center top;display:none">
+    <div style="padding:1.5rem 2rem 2rem">
+      <p id="subject-modal-tag" style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#c9a96e;margin-bottom:0.6rem"></p>
+      <h3 id="subject-modal-name" style="font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;color:#f4f0e8;margin-bottom:1rem;line-height:1.2"></h3>
+      <p id="subject-modal-text" style="font-size:0.85rem;line-height:1.8;color:rgba(244,240,232,0.75);margin:0"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+const subjects = {
+  'albanese': {
+    name: 'Francesca Albanese',
+    role: 'UN Special Rapporteur on Palestine',
+    img: 'https://photos.smugmug.com/Website-Stills/i-S5kht7x/0/LNjv7P2d9hk6xN4rLBW76PBgx8Zhn48PHk7JPD7Vj/X3/Untitled%20-%201%20of%201%20%285%29-X3.jpg',
+    text: 'UN Special Rapporteur on the Occupied Palestinian Territories since 2022. Sanctioned by the United States, threatened, made functionally unbankable. She continues regardless. Her legal work forms the professional resistance spine of the film.'
+  },
+  'mccann': {
+    name: 'Eamonn McCann',
+    role: 'Civil rights leader · Derry',
+    img: 'https://photos.smugmug.com/Website-Stills/i-qZRv6Wj/0/LGzt2kNdh8bJ9NKbSg2dpRmHGL4xcJM8vjxLwH9bv/XL/Untitled%20-%201%20of%201%20%2816%29-XL.jpg',
+    text: 'One of the founding figures of the Northern Ireland civil rights movement. A Derry socialist and longtime associate of Bernadette Devlin McAliskey, he was there from the beginning — the marches, the Bogside, Bloody Sunday. His witness connects the Irish experience directly to what the film is arguing about Palestine.'
+  },
+  'devlin': {
+    name: 'Bernadette Devlin McAliskey',
+    role: 'Civil rights leader · Ireland',
+    img: 'https://photos.smugmug.com/Website-Stills/i-2NsKJXG/0/LQBV6J6JxCnSkTTvhvDWtXQWJmfx85KM76Vtd5ctB/XL/Untitled%20-%201%20of%201%20%2815%29-XL.jpg',
+    text: 'Civil rights leader, former MP, founding figure of the Northern Ireland civil rights movement. She has lived inside the architecture of colonial violence her entire life and recognises it everywhere. One of the film\'s most clear-eyed voices.'
+  },
+  'rabbi': {
+    name: 'Rabbi Dovid Feldman',
+    role: 'Neturei Karta · Anti-Zionist Orthodox',
+    img: 'https://photos.smugmug.com/Website-Stills/i-F3vQWwM/0/KL8Ff3PL9GgFM6dmNkmggqtmfPdM7L4L8bhgq6WJv/X3/Untitled%20-%201%20of%201%20%286%29-X3.jpg',
+    text: 'Spokesperson for Neturei Karta, the anti-Zionist Orthodox Jewish movement. Speaking from inside Jewish tradition, he argues that Zionism is a fundamental betrayal of Jewish values. His presence in the film challenges the weaponisation of antisemitism.'
+  },
+  'selena': {
+    name: 'Selena Cruz',
+    role: 'Colombian collaborator · Bogotá',
+    img: 'https://photos.smugmug.com/Website-Stills/i-8ZZsgJT/0/KwJmftKDsQgK7ZCgv9gjTcqS8mg4D5TGx9Gmv2LB2/XL/Untitled%20-%201%20of%201%20%284%29-XL.jpg',
+    text: 'Colombian collaborator based in Bogotá. Working at the intersection of theatre, resistance, and community practice, she connects the false positives scandal to the global architecture of state violence.'
+  },
+  'medea': {
+    name: 'Medea Benjamin',
+    role: 'CODEPINK · Washington DC',
+    img: 'https://photos.smugmug.com/Website-Stills/i-HtBV7Px/0/M9HFJMKccwz9mc2gdVK655PHQ29BmhBmxhwk53696/XL/medea-XL.jpg',
+    text: 'Co-founder of CODEPINK, the women-led antiwar organisation. One of the most prominent voices against US military funding of the Israeli assault on Gaza and the capture of American political life by AIPAC.'
+  },
+  'asa': {
+    name: 'Asa Winstanley',
+    role: 'Electronic Intifada · London',
+    img: 'https://photos.smugmug.com/Website-Stills/i-vxd25qF/0/NKBp3tN58HkbsqjL3x9jmt3dP732KxxwqDG3WPXcz/XL/Untitled%20-%201%20of%201%20%2812%29-XL.jpg',
+    text: 'Journalist and editor at Electronic Intifada. Arrested by UK counter-terrorism police for his reporting. His contribution to the film covers the ousting of Corbyn, the weaponisation of antisemitism accusations, and the criminalisation of protest. Filmed in the London Underground.'
+  },
+  'corbyn': {
+    name: 'Jeremy Corbyn',
+    role: 'Former Labour leader · London',
+    img: 'https://photos.smugmug.com/Website-Stills/i-WtHbDv7/0/LZTWdRsjVGntsBrkP3n7QCghQ3X9xnxQMFsGv37Hb/X3/Untitled%20-%201%20of%201%20%2810%29-X3.jpg',
+    text: 'Former leader of the British Labour Party. Subject of a coordinated campaign that weaponised antisemitism accusations to remove him from power. His story is central to the film\'s account of how legitimate dissent gets neutralised in British politics.'
+  },
+  'browne': {
+    name: 'Prof. Brendan Browne',
+    role: 'Conflict scholar · Trinity College Dublin',
+    img: 'https://photos.smugmug.com/Website-Stills/i-pHpxjtG/0/Kn9pgmJ9SHdfq4Bh8ZkMDGctXCTZKV99p5kczMBwX/XL/Untitled%20-%201%20of%201%20%288%29-XL.jpg',
+    text: 'Irish academic whose analysis of the architecture of transferable state violence — the systems and tactics that move from one colonial front to another — provides a critical framework for the film\'s argument.'
+  },
+  'morgan': {
+    name: 'Dr. Morgan McMongial',
+    role: 'Irish trauma surgeon · Gaza',
+    img: 'https://photos.smugmug.com/Website-Stills/i-wR389Mh/0/KX8prrRNgpVSdS3SzHzBzFWHLm3GMJz9k3Mv6SxsF/XL/Untitled%20-%201%20of%201%20%289%29-XL.jpg',
+    text: 'Irish trauma surgeon who worked in Gaza during the assault. Now training as a barrister. His testimony bridges the clinical reality of what is happening on the ground and the legal framework that enables it.'
+  }
+};
+
+var modal = document.getElementById('subject-modal');
+var modalImg = document.getElementById('subject-modal-img');
+
+function openSubject(key) {
+  var s = subjects[key];
+  if (!s) return;
+  document.getElementById('subject-modal-tag').textContent = s.role;
+  document.getElementById('subject-modal-name').textContent = s.name;
+  document.getElementById('subject-modal-text').textContent = s.text;
+  if (s.img) { modalImg.src = s.img; modalImg.style.display = 'block'; }
+  else { modalImg.src = ''; modalImg.style.display = 'none'; }
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSubject() {
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal-close-btn').addEventListener('click', closeSubject);
+modal.addEventListener('click', function(e) { if (e.target === modal) closeSubject(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSubject(); });
+
+var cards = document.querySelectorAll('.card-item[data-subject]');
+for (var i = 0; i < cards.length; i++) {
+  cards[i].style.cursor = 'pointer';
+  (function(card) {
+    card.addEventListener('click', function() { openSubject(card.getAttribute('data-subject')); });
+  })(cards[i]);
+}
+</script>
+
+
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  function init() {
+    // Reveal on all section headings, content blocks, film cards, pull quotes
+    var targets = document.querySelectorAll(
+      '.content-section, .film-section, .pull-quote, .film-card, .content-grid, .page-hero-right, .film-panel'
+    );
+    targets.forEach(function(el, i) {
+      el.classList.add('reveal');
+      if (i % 3 === 1) el.classList.add('reveal-delay-1');
+      if (i % 3 === 2) el.classList.add('reveal-delay-2');
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Hero quote fade in on load
+  var heroQuote = document.querySelector('.hero-quote');
+  if (heroQuote) {
+    setTimeout(function() {
+      heroQuote.style.opacity = '1';
+      heroQuote.style.transform = 'scale(1)';
+    }, 400);
+  }
+})();
+</script>
+
+
+<script>
+(function() {
+  function staggerPortraits() {
+    var cards = document.querySelectorAll('.card-item[data-subject]');
+    cards.forEach(function(card, i) {
+      setTimeout(function() {
+        card.classList.add('portrait-visible');
+      }, 200 + (i * 180));
+    });
+  }
+
+  var section = document.querySelector('.card-item[data-subject]');
+  if (!section) return;
+
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      staggerPortraits();
+      obs.disconnect();
+    }
+  }, { threshold: 0.1 });
+
+  obs.observe(section.closest('section') || section);
+})();
+</script>
+
+
+
+
+
+<script>
+// Page transitions
+(function() {
+  document.querySelectorAll('a[href]').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.classList.add('page-transition-out');
+      setTimeout(function() { window.location.href = href; }, 280);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
