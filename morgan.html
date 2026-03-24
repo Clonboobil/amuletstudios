@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Witness — Billy McCannon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0e0c09;--paper:#f4f0e8;--warm:#c9a96e;--rust:#8b3a2a;--pale:#e8e3d8;--mid:#7a7468}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid #c9a96e}.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;min-height:3.5rem}
+.nav-logo{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#8b3a2a;text-decoration:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8b3a2a;text-decoration:none;font-weight:400}
+.back-link{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:2rem;transition:color 0.2s}
+.page-tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:1.2rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.page-subtitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--mid)}
+.meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mid);margin-bottom:0.25rem}
+.meta-value{font-size:0.85rem}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--pale)}
+.section-label.light{color:rgba(244,240,232,0.4)}
+.section-label.light::after{background:rgba(244,240,232,0.1)}
+.content-section{padding:5rem;border-bottom:1px solid rgba(0,0,0,0.08)}
+.content-section.dark{background:var(--ink);color:var(--paper);border-bottom:none}
+.content-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem}
+.content-aside h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1.1;margin-bottom:0.5rem}
+.content-aside p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--mid)}
+.content-section.dark .content-aside p{color:rgba(244,240,232,0.4)}
+.content-body p{font-size:0.9rem;line-height:1.85;color:#3a3730;margin-bottom:1rem;max-width:60ch}
+.content-section.dark .content-body p{color:rgba(244,240,232,0.75)}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2rem}
+.card-item{background:rgba(244,240,232,0.04);padding:2rem;border:1px solid rgba(244,240,232,0.08)}
+.card-name{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--warm);margin-bottom:0.4rem}
+.card-role{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(244,240,232,0.4);line-height:1.5}
+.page-footer{background:var(--ink);padding:1.5rem 5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,240,232,0.08)}
+.page-footer p{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:rgba(244,240,232,0.25)}
+.footer-nav{display:flex;gap:2rem}
+.footer-nav a{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,232,0.5);text-decoration:none}
+.footer-nav a:hover{color:var(--warm)}
+@media(max-width:900px){
+  .nav-inner{padding:1rem 1.5rem}
+  .nav-links{gap:0.75rem;flex-wrap:wrap}
+  .content-section{padding:3rem 2rem}
+  .content-grid{grid-template-columns:1fr;gap:2rem}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .page-footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
+  .footer-nav{justify-content:center}
+}
+body{animation:pageFadeIn 0.5s ease forwards}
+@keyframes pageFadeIn{from{opacity:0}to{opacity:1}}
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--rust);transition:width 0.25s ease}
+.nav-links a:hover::after{width:100%}
+.page-transition-out{animation:pageFadeOut 0.3s ease forwards}
+@keyframes pageFadeOut{from{opacity:1}to{opacity:0}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+  <a class="nav-logo" href="index.html">Billy McCannon</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="everybody-knows.html">Everybody Knows</a></li>
+    <li><a href="films.html">Films</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  </div>
+</nav>
+
+<section style="margin-top:3.5rem;position:relative;min-height:80vh;background-image:url('https://photos.smugmug.com/Website-Stills/i-wR389Mh/0/Kq4JXxQNRTM8L4rrc7nPgZ6f586HsFNZP6hzsVr8Q/X3/Untitled%20-%201%20of%201%20%289%29-X3.jpg');background-size:cover;background-position:center top;display:flex;flex-direction:column;justify-content:center">
+  <div style="position:absolute;inset:0;background:rgba(14,12,9,0.65)"></div>
+  <div style="position:relative;z-index:1;padding:5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+    <div>
+      <a href="films.html" class="back-link" style="color:rgba(244,240,232,0.4)">← Back to Films</a>
+      <p class="page-tag" style="color:var(--warm)">Feature Documentary · In Development</p>
+      <h1 class="page-title" style="color:var(--paper)">The<br>Witness</h1>
+      <p class="page-subtitle" style="color:rgba(244,240,232,0.5)">Director · Billy McCannon · 2025–present</p>
+    </div>
+    <div>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--paper);line-height:1.5;margin-bottom:2rem">A trauma surgeon who has treated every kind of violence goes to Gaza three times — and begins building the prosecution case.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid rgba(244,240,232,0.2);padding-top:1.5rem">
+        <div><p class="meta-label" style="color:rgba(244,240,232,0.4)">Format</p><p class="meta-value" style="color:var(--paper)">Feature Documentary</p></div>
+        <div><p class="meta-label" style="color:rgba(244,240,232,0.4)">Status</p><p class="meta-value" style="color:var(--paper)">In Development</p></div>
+        <div><p class="meta-label" style="color:rgba(244,240,232,0.4)">Subject</p><p class="meta-value" style="color:var(--paper)">Dr. Morgan McMongial</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" style="background:#e0dbd0">
+  <div class="content-grid">
+    <div class="content-aside">
+      <h3>The Film.</h3>
+      <p>Documentary · Medical · Legal</p>
+    </div>
+    <div class="content-body">
+      <p>Dr. Morgan McMongial has spent his career treating the worst injuries humans can sustain. As the surgeon on call during the Westminster Bridge Attack, London Bridge Attack, and Grenfell Tower Fire, he knows what mass casualty events look like. After a fellowship in Philadelphia treating 6–8 gunshot wounds per night, he understands urban violence. Training military trauma surgeons at Queen Elizabeth Hospital, he has seen combat injuries. Helicopter rescues in the Australian outback taught him emergency trauma under impossible conditions.</p>
+      <p>But when he volunteers for his first mission to Gaza in 2024, something doesn't fit the patterns he has learned across three decades. The injuries are different. The victims are overwhelmingly children. The precision of the weapons tells a story his surgical eye can't ignore: this isn't collateral damage — it's systematic.</p>
+      <p>He returns to Gaza twice more. Each mission deepens his understanding. A 13-year-old girl shot multiple times by an Apache helicopter — only in her limbs, never her torso. A pregnant woman shot through her uterus, the bullet passing through her fetus's heart. Children denied evacuation until they die. The forensic evidence is overwhelming.</p>
+      <p>Back in Waterford, Morgan begins studying for the bar. Not to become a lawyer — to understand how medical evidence becomes legal prosecution. How wounds can testify in international courts. How a trauma surgeon's clinical observations can help prove genocidal intent.</p>
+      <p><em>The Witness</em> follows Morgan between operating theatres in Ireland and war zones in Gaza, as he transforms from surgeon to prosecutor, building the case that could change how the world sees what is happening to Gaza's children — one wound at a time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-aside">
+      <h3>Logline.</h3>
+    </div>
+    <div class="content-body">
+      <p style="font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;line-height:1.7;color:var(--ink);max-width:55ch">A world-renowned trauma surgeon who has treated every kind of violence — from London terror attacks to Philadelphia gunshot wounds — goes to Gaza three times, recognises systematic targeting of children, and studies international law to build the prosecution case.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section dark">
+  <p class="section-label light">Key Subject</p>
+  <div class="card-grid">
+    <div class="card-item"><p class="card-name">Dr. Morgan McMongial</p><p class="card-role">Irish trauma surgeon · Gaza · Waterford University Hospital · Studying for the bar</p></div>
+    <div class="card-item"><p class="card-name">Billy McCannon</p><p class="card-role">Director · Amulet Studios · Ireland</p></div>
+    <div class="card-item"><p class="card-name">Sadbh McCannon</p><p class="card-role">Producer · Amulet Studios · Ireland</p></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-aside"><h3>Press &amp;<br>enquiries.</h3></div>
+    <div class="content-body">
+      <p>For press and co-production enquiries, contact Billy McCannon at Amulet Studios.</p>
+      <p><a href="index.html#contact" style="color:var(--rust)">Contact form →</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <p>© 2026 Billy McCannon / Amulet Studios</p>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="films.html">Films</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</footer>
+
+<script>
+document.querySelectorAll('a[href]').forEach(function(link) {
+  var href = link.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.body.classList.add('page-transition-out');
+    setTimeout(function() { window.location.href = href; }, 280);
+  });
+});
+</script>
+</body>
+</html>
