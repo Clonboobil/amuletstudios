@@ -201,7 +201,7 @@ body { animation: pageFadeIn 0.5s ease forwards; }
 <body>
 <nav>
   <div class="nav-inner">
-  <a class="nav-logo" href="index.html">Billy McCannon</a>
+  <a class="nav-logo" href="index.html" style="display:flex;align-items:center;background:rgba(14,12,9,0.52);padding:6px 8px;backdrop-filter:blur(4px)"><svg width="44" height="36" viewBox="0 0 170 112" xmlns="http://www.w3.org/2000/svg"><path d="M160,60 C160,60 124,10 82,10 C40,10 12,32 12,60 C12,88 40,110 82,110 C124,110 160,60 160,60 Z" fill="#f0ebe3"/><path d="M143,60 C143,60 112,24 82,24 C52,24 28,40 28,60 C28,80 52,96 82,96 C112,96 143,60 143,60 Z" fill="#D4580A"/><path d="M126,60 C126,60 104,38 82,38 C60,38 46,48 46,60 C46,72 60,82 82,82 C104,82 126,60 126,60 Z" fill="#f0ebe3"/><ellipse cx="82" cy="60" rx="16" ry="16" fill="#D4580A"/><ellipse cx="82" cy="60" rx="6" ry="6" fill="#111"/><line x1="50" y1="30" x2="43" y2="16" stroke="#f0ebe3" stroke-width="2" stroke-linecap="round"/><line x1="66" y1="16" x2="62" y2="2" stroke="#f0ebe3" stroke-width="2" stroke-linecap="round"/><line x1="82" y1="10" x2="82" y2="4" stroke="#f0ebe3" stroke-width="2" stroke-linecap="round"/><line x1="98" y1="16" x2="102" y2="2" stroke="#f0ebe3" stroke-width="2" stroke-linecap="round"/><line x1="114" y1="30" x2="121" y2="18" stroke="#f0ebe3" stroke-width="2" stroke-linecap="round"/><line x1="136" y1="46" x2="146" y2="36" stroke="#f0ebe3" stroke-width="2" stroke-linecap="round"/></svg></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="everybody-knows.html">Everybody Knows</a></li>
@@ -212,7 +212,7 @@ body { animation: pageFadeIn 0.5s ease forwards; }
   </div>
 </nav>
 
-<section style="padding:8rem 5rem 4rem;border-bottom:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;background:#e0dbd0">
+<section style="padding:8rem 5rem 4rem;border-bottom:1px solid rgba(0,0,0,0.08);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;background:var(--pale)">
   <div>
     <img src="https://photos.smugmug.com/Website-Stills/i-kgNMBnS/0/K25MVjhLqC88zhvNCRksHFKTCF7ddSrkxSm63n2dT/XL/Recoil%20-%20Billy-XL.jpg" alt="Billy McCannon" style="width:100%;height:auto;display:block">
   </div>
@@ -222,58 +222,36 @@ body { animation: pageFadeIn 0.5s ease forwards; }
     <p style="font-size:1rem;line-height:1.85;color:#3a3730;max-width:55ch">35 years of documentary, drama, participatory and personal filmmaking.</p>
   </div>
 </section>
-
-
-<div style="background:#e0dbd0;padding:3rem 5rem 0">
-  <div style="display:flex;gap:4px;align-items:flex-end">
-    <button onclick="showTab('current')" id="tab-current" style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:#a89880;color:#fff;border:none;padding:1rem 3.6rem 1.4rem;cursor:pointer;clip-path:polygon(0 18px,18px 0,100% 0,100% 100%,0 100%)">Production</button>
-    <button onclick="showTab('dev')" id="tab-dev" style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:#c4b99a;color:var(--ink);border:none;padding:1rem 3.6rem 1rem;cursor:pointer;opacity:0.6;clip-path:polygon(0 18px,18px 0,100% 0,100% 100%,0 100%)">In Development</button>
-    <button onclick="showTab('archive')" id="tab-archive" style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;background:#d4cfc8;color:var(--ink);border:none;padding:1rem 3.6rem 1rem;cursor:pointer;opacity:0.6;clip-path:polygon(0 18px,18px 0,100% 0,100% 100%,0 100%)">Filmography</button>
-  </div>
-</div>
-
-<div id="panel-current" style="padding:0 5rem 5rem;background:#a89880">
+<div style="padding:0 5rem 5rem">
   <a class="film-panel" href="everybody-knows.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
     <img src="https://photos.smugmug.com/Website-Stills/i-F3vQWwM/0/KL8Ff3PL9GgFM6dmNkmggqtmfPdM7L4L8bhgq6WJv/X3/Untitled%20-%201%20of%201%20%286%29-X3.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
-    <div><p class="panel-number" style="color:rgba(244,240,232,0.4)">01</p><p class="panel-tag" style="color:var(--warm)">Feature Documentary</p><p class="panel-status" style="color:rgba(244,240,232,0.5)">Post-Production · 2026</p></div>
-    <div><h2 class="panel-title" style="color:#fff">Everybody Knows</h2><p class="panel-desc" style="color:rgba(244,240,232,0.8)">A four-country investigation into global resistance to genocide in Gaza through the lens of Irish post-colonial identity.</p></div>
-    <div class="panel-arrow" style="color:var(--warm)">→</div>
+    <div><p class="panel-number">01</p><p class="panel-tag">Feature Documentary</p><p class="panel-status">Post-Production · 2026</p></div>
+    <div><h2 class="panel-title">Everybody Knows</h2><p class="panel-desc">A four-country investigation into global resistance to genocide in Gaza through the lens of Irish post-colonial identity.</p></div>
+    <div class="panel-arrow">→</div>
   </a>
-</div>
-
-<div id="panel-dev" style="padding:0 5rem 5rem;background:#c4b99a;display:none">
   <a class="film-panel" href="boots-on-backwards.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
     <img src="https://photos.smugmug.com/Website-Stills/i-WMzL8KS/0/KFMnTKS5nK7mwV8hfp8hR9MH8vsfJkPwdPNb7WqfG/XL/door%20armed-XL.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
-    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">01</p><p class="panel-tag" style="color:var(--rust)">Feature Documentary</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">In Development · 2025</p></div>
-    <div><h2 class="panel-title" style="color:var(--ink)">Boots on Backwards</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">Colombia's false positives scandal. Over 6,400 civilians murdered. Developed with Luz Marina Bernal Parra.</p></div>
-    <div class="panel-arrow" style="color:var(--rust)">→</div>
+    <div><p class="panel-number">02</p><p class="panel-tag">Feature Documentary</p><p class="panel-status">In Development · 2025</p></div>
+    <div><h2 class="panel-title">Boots on Backwards</h2><p class="panel-desc">Colombia's false positives scandal. Over 6,000 civilians murdered. Developed with Luz Marina Bernal Parra.</p></div>
+    <div class="panel-arrow">→</div>
   </a>
-  <a class="film-panel" href="the-witness.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
-    <img src="https://photos.smugmug.com/Website-Stills/i-wR389Mh/0/Kq4JXxQNRTM8L4rrc7nPgZ6f586HsFNZP6hzsVr8Q/X3/Untitled%20-%201%20of%201%20%289%29-X3.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
-    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">02</p><p class="panel-tag" style="color:var(--rust)">Feature Documentary</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">In Development · 2025</p></div>
-    <div><h2 class="panel-title" style="color:var(--ink)">The Witness</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">An Irish trauma surgeon goes to Gaza three times and begins building the prosecution case.</p></div>
-    <div class="panel-arrow" style="color:var(--rust)">→</div>
-  </a>
-</div>
-
-<div id="panel-archive" style="padding:0 5rem 5rem;background:#d4cfc8;display:none">
   <a class="film-panel" href="participatory.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
     <img src="https://photos.smugmug.com/Website-Stills/i-jmTWNVH/0/KmnpXgjxnBCPLgnRpwxhZgXHmDkVSjs4TnDHbbM9S/M/wally-M.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
-    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">01</p><p class="panel-tag" style="color:var(--rust)">Participatory Works</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">1999–present</p></div>
-    <div><h2 class="panel-title" style="color:var(--ink)">Participatory Works</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">A decade inside Portlaoise Prison with former combatants, and community documentary films made with Dublin neighbourhoods.</p></div>
-    <div class="panel-arrow" style="color:var(--rust)">→</div>
+    <div><p class="panel-number">03</p><p class="panel-tag">Participatory Works</p><p class="panel-status">1999–present</p></div>
+    <div><h2 class="panel-title">Participatory Works</h2><p class="panel-desc">A decade inside Portlaoise Prison with former combatants, and community documentary films made with Dublin neighbourhoods.</p></div>
+    <div class="panel-arrow">→</div>
   </a>
   <a class="film-panel" href="early-work.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
     <img src="https://photos.smugmug.com/Website-Stills/i-NdQsqF5/0/KDFv9SsXSdPfLchK4q59pj3ffNb56hhp4ZWPdQqKW/XL/Library%20-%209414-XL.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
-    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">02</p><p class="panel-tag" style="color:var(--rust)">Short Features</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">1988–2004</p></div>
-    <div><h2 class="panel-title" style="color:var(--ink)">Short Features</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">Short films shot on celluloid. Cork Film Festival, IFB Short Cuts, international broadcast and acquisition.</p></div>
-    <div class="panel-arrow" style="color:var(--rust)">→</div>
+    <div><p class="panel-number">04</p><p class="panel-tag">Early Work</p><p class="panel-status">1988–2004</p></div>
+    <div><h2 class="panel-title">Early Work</h2><p class="panel-desc">Short films shot on celluloid. Cork Film Festival, IFB Short Cuts, international broadcast and acquisition.</p></div>
+    <div class="panel-arrow">→</div>
   </a>
   <a class="film-panel" href="personal-films.html" style="display:grid;grid-template-columns:256px 1fr 2fr auto;gap:2rem;align-items:center">
     <img src="https://photos.smugmug.com/Website-Stills/i-xCB6Bz9/0/Ncss5Wwn942wFg8S8zR2wnNkhrMP9QhTGkGKKfBNf/XL/brazil%20girl%205-XL.jpg" style="width:256px;height:192px;object-fit:cover;display:block">
-    <div><p class="panel-number" style="color:rgba(14,12,9,0.3)">03</p><p class="panel-tag" style="color:var(--rust)">Personal Films</p><p class="panel-status" style="color:rgba(14,12,9,0.45)">Ongoing</p></div>
-    <div><h2 class="panel-title" style="color:var(--ink)">Personal Films</h2><p class="panel-desc" style="color:rgba(14,12,9,0.6)">Films made outside commission — on their own terms, for their own reasons.</p></div>
-    <div class="panel-arrow" style="color:var(--rust)">→</div>
+    <div><p class="panel-number">05</p><p class="panel-tag">Personal Films</p><p class="panel-status">Ongoing</p></div>
+    <div><h2 class="panel-title">Personal Films</h2><p class="panel-desc">Films made outside commission — on their own terms, for their own reasons.</p></div>
+    <div class="panel-arrow">→</div>
   </a>
 </div>
 
@@ -287,27 +265,57 @@ body { animation: pageFadeIn 0.5s ease forwards; }
   </nav>
 </footer>
 
+
+
 <script>
-function showTab(name) {
-  ['current','dev','archive'].forEach(function(t) {
-    document.getElementById('panel-' + t).style.display = 'none';
-    document.getElementById('tab-' + t).style.opacity = '0.6';
-    document.getElementById('tab-' + t).style.paddingBottom = '0.75rem';
-  });
-  document.getElementById('panel-' + name).style.display = 'block';
-  var active = document.getElementById('tab-' + name);
-  active.style.opacity = '1';
-  active.style.paddingBottom = '1.2rem';
-}
-document.querySelectorAll('a[href]').forEach(function(link) {
-  var href = link.getAttribute('href');
-  if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.body.classList.add('page-transition-out');
-    setTimeout(function() { window.location.href = href; }, 280);
-  });
-});
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  function init() {
+    // Reveal on all section headings, content blocks, film cards, pull quotes
+    var targets = document.querySelectorAll(
+      '.content-section, .film-section, .pull-quote, .film-card, .content-grid, .page-hero-right, .film-panel'
+    );
+    targets.forEach(function(el, i) {
+      el.classList.add('reveal');
+      if (i % 3 === 1) el.classList.add('reveal-delay-1');
+      if (i % 3 === 2) el.classList.add('reveal-delay-2');
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
+
+
+
+
+
+<script>
+// Page transitions
+(function() {
+  document.querySelectorAll('a[href]').forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.classList.add('page-transition-out');
+      setTimeout(function() { window.location.href = href; }, 280);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
