@@ -208,12 +208,14 @@ body { animation: pageFadeIn 0.5s ease forwards; }
     <p style="font-family:'IBM Plex Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(244,240,232,0.8)">View Film →</p>
   </a>
 </div>
-<section class="hero" style="padding-top:0;grid-template-columns:1fr;border-right:none;background:#e0dbd0" id="films">
-  <div class="hero-left" style="border-right:none;max-width:60ch">
+<section style="padding-top:0;background:#e0dbd0;display:grid;grid-template-columns:1fr 1fr;gap:0" id="films">
+  <div style="padding:5rem 4rem 5rem 5rem;border-right:1px solid rgba(0,0,0,0.08)">
     <p class="eyebrow">Filmmaker — Dublin</p>
     <h1 class="hero-name">Billy<br><em>McCannon</em></h1>
     <p class="hero-title">Director · Amulet Studios</p>
-    <p class="hero-bio">35 years making films that go where they're not supposed to. Work built on trust, shaped by Irish experience, and pointed at the <strong>architecture of power</strong>.<br><br>Member, Directors Guild of Ireland.</p>
+  </div>
+  <div style="padding:5rem 5rem 5rem 4rem;display:flex;align-items:flex-end">
+    <p class="hero-bio" style="font-size:1.2rem;line-height:1.7">35 years making films that go where they're not supposed to. Work built on trust, shaped by Irish experience, and pointed at the <strong>architecture of power</strong>.<br><br>Member, Directors Guild of Ireland.</p>
   </div>
 </section>
 
@@ -284,7 +286,7 @@ function showTab(name) {
 }
 </script>
 
-<section id="showreel" style="margin-top:4rem">
+<section id="showreel">
   <p class="showreel-label">Showreel</p>
   <div class="showreel-wrapper">
     <iframe src="https://player.vimeo.com/video/7683056?byline=0&portrait=0&title=0&color=c9a96e" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -296,17 +298,6 @@ function showTab(name) {
 
 
 
-<section id="about">
-  <div class="about-aside">
-    <div><p class="stat-number">35</p><p class="stat-label">Years filmmaking</p></div>
-    <div><p class="stat-number">10</p><p class="stat-label">Walls Behind Walls · Portlaoise Prison</p></div>
-    <div><p class="stat-number">DGI</p><p class="stat-label">Directors Guild of Ireland</p></div>
-  </div>
-  <div class="about-body">
-    <h2>Documentary is<br>a contact sport.</h2>
-    <p>Irish filmmaker and participatory arts practitioner. Founder of Amulet Studios. 35 years across drama, documentary and community arts. MA Fine Art, NCAD.</p>
-  </div>
-</section>
 
 <section id="contact">
   <div>
